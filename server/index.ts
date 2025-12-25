@@ -1,6 +1,5 @@
-import express from "express";
+import express, { type Express } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 app.use(express.json());
@@ -16,14 +15,8 @@ app.use(express.urlencoded({ extended: false }));
     throw err;
   });
 
-  if (process.env.NODE_ENV === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
-
   const PORT = 5000;
   server.listen(PORT, "0.0.0.0", () => {
-    log(`serving on port ${PORT}`);
+    console.log(`serving on port ${PORT}`);
   });
 })();
