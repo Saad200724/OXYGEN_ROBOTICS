@@ -139,7 +139,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.7 }}
             >
-              <span className="text-muted-foreground">NODES:</span>{" "}
+              <span className="text-muted-foreground">REGIONS:</span>{" "}
               <span className="text-primary">3 ACTIVE</span>
             </motion.div>
           </motion.div>
