@@ -11,6 +11,7 @@ const Navigation = () => {
   const links = [
     { label: "HOME", href: "/" },
     { label: "ABOUT", href: "/about" },
+    { label: "PANEL", href: "/panel" },
     { label: "INTERNATIONAL", href: "/international" },
     { label: "GALLERY", href: "/gallery" },
   ];
