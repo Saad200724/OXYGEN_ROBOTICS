@@ -5,6 +5,7 @@ const AnimatedGlobe = () => {
   const cities = [
     { name: "Dhaka", cx: 320, cy: 155, label: "HQ" },
     { name: "Kuala Lumpur", cx: 340, cy: 185, label: "APAC" },
+    { name: "Islamabad", cx: 280, cy: 145, label: "SOUTH ASIA" },
   ];
 
   return (
