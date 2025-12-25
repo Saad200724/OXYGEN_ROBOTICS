@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc -p tsconfig.node.json",
-    "start": "NODE_ENV=production tsx server/index.ts",
+    "build": "vite build && tsc -p tsconfig.json",
+    "start": "tsx server/index.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"

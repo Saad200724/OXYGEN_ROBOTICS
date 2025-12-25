@@ -19,15 +19,24 @@ app.use(express.urlencoded({ extended: false }));
     res.status(status).json({ message });
   });
 
-  if (process.env.NODE_ENV === "production") {
-    const publicPath = path.resolve(__dirname, "../dist");
-    app.use(express.static(publicPath));
-    app.get("*", (_req, res) => {
-      res.sendFile(path.resolve(publicPath, "index.html"));
+  // For Replit/Vercel deployment: Always serve static files from dist
+  const publicPath = path.resolve(__dirname, "../dist");
+  app.use(express.static(publicPath));
+  
+  // Handle SPA routing - serve index.html for all non-API routes
+  app.get("*", (req, res, next) => {
+    if (req.path.startsWith("/api")) {
+      return next();
+    }
+    // Only try to send index.html if it exists, otherwise fall through or error
+    res.sendFile(path.resolve(publicPath, "index.html"), (err) => {
+      if (err) {
+        res.status(404).send("Frontend build not found. Please run 'npm run build' first.");
+      }
     });
-  }
+  });
 
-  const PORT = process.env.PORT || 5000;
+  const PORT = Number(process.env.PORT) || 5000;
   server.listen(PORT, "0.0.0.0", () => {
     console.log(`serving on port ${PORT}`);
   });
