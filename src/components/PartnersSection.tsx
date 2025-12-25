@@ -41,12 +41,12 @@ const PartnersSection = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="group"
             >
-              <div className="flex flex-col items-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+              <div className="flex flex-col items-center gap-3 opacity-80 hover:opacity-100 transition-opacity duration-300">
                 <div className="h-16 flex items-center justify-center">
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="h-full w-auto max-w-[140px] object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
+                    className="h-full w-auto max-w-[140px] object-contain"
                   />
                 </div>
               </div>

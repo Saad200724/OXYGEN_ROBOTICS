@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 const AnimatedGlobe = () => {
   // City coordinates (approximate positions on the globe projection)
   const cities = [
-    { name: "Dhaka", cx: 240, cy: 160, label: "HQ", labelX: -60, labelY: -10 },
-    { name: "Kuala Lumpur", cx: 260, cy: 220, label: "APAC", labelX: 15, labelY: 4 },
-    { name: "Islamabad", cx: 180, cy: 150, label: "SOUTH ASIA", labelX: -75, labelY: 4 },
+    { name: "Dhaka", cx: 260, cy: 165, label: "HQ", labelX: 15, labelY: 4 },
+    { name: "Islamabad", cx: 200, cy: 140, label: "SOUTH ASIA", labelX: 0, labelY: -25 },
+    { name: "Kuala Lumpur", cx: 270, cy: 230, label: "APAC", labelX: 15, labelY: 4 },
   ];
 
   return (
@@ -133,7 +133,7 @@ const AnimatedGlobe = () => {
                 fontSize="11"
                 fontFamily="JetBrains Mono, monospace"
                 fontWeight="500"
-                textAnchor={city.labelX < 0 ? "end" : "start"}
+                textAnchor={city.labelX === 0 ? "middle" : city.labelX < 0 ? "end" : "start"}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 + i * 0.3 }}
@@ -146,7 +146,7 @@ const AnimatedGlobe = () => {
                 fill="hsl(var(--muted-foreground))"
                 fontSize="8"
                 fontFamily="JetBrains Mono, monospace"
-                textAnchor={city.labelX < 0 ? "end" : "start"}
+                textAnchor={city.labelX === 0 ? "middle" : city.labelX < 0 ? "end" : "start"}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 + i * 0.3 }}
