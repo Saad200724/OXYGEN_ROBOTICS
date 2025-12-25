@@ -1,11 +1,13 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, MapPin, Calendar, Trophy, Target } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const panels = [
-  {
+const panels = {
+  bangladesh: {
     country: "Bangladesh",
     flag: "🇧🇩",
     status: "Headquarters",
@@ -20,7 +22,7 @@ const panels = [
     ],
     focus: ["AI/ML Research", "Robotics Development", "Youth Training"]
   },
-  {
+  pakistan: {
     country: "Pakistan",
     flag: "🇵🇰",
     status: "Active",
@@ -35,7 +37,7 @@ const panels = [
     ],
     focus: ["Robotics Education", "STEM Outreach", "Competition Prep"]
   },
-  {
+  malaysia: {
     country: "Malaysia",
     flag: "🇲🇾",
     status: "Active",
@@ -50,9 +52,14 @@ const panels = [
     ],
     focus: ["International Collaboration", "Tech Partnerships", "Innovation Hub"]
   }
-];
+};
+
+type PanelKey = keyof typeof panels;
 
 const Panel = () => {
+  const [activePanel, setActivePanel] = useState<PanelKey>("bangladesh");
+  const currentPanel = panels[activePanel];
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -60,92 +67,125 @@ const Panel = () => {
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-6">
           {/* Header */}
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
-              3 Active Regions
-            </Badge>
+          <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Regional Panels
+              REGIONAL PANELS
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Explore our active chapters across the globe, each contributing to our mission of uniting young innovators.
+              Explore our active chapters across the globe
             </p>
+            <div className="w-20 h-1 bg-primary mx-auto mt-6" />
           </div>
 
-          {/* Panels Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {panels.map((panel) => (
-              <Card key={panel.country} className="bg-card border-border hover:border-primary/50 transition-colors">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-4xl">{panel.flag}</span>
-                    <Badge 
-                      variant={panel.status === "Headquarters" ? "default" : "secondary"}
-                      className={panel.status === "Headquarters" ? "bg-primary" : ""}
-                    >
-                      {panel.status}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-2xl">{panel.country}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <p className="text-muted-foreground text-sm">
-                    {panel.description}
+          {/* Tab Navigation */}
+          <div className="flex justify-center gap-2 mb-12">
+            {(Object.keys(panels) as PanelKey[]).map((key) => (
+              <button
+                key={key}
+                onClick={() => setActivePanel(key)}
+                className={`px-6 py-3 font-mono text-sm rounded-full border transition-all ${
+                  activePanel === key
+                    ? "bg-primary/20 border-primary text-primary"
+                    : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                }`}
+              >
+                {panels[key].flag} {panels[key].country}
+              </button>
+            ))}
+          </div>
+
+          {/* Active Panel Content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePanel}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Featured Card */}
+              <Card className="max-w-3xl mx-auto mb-12 bg-card border-primary/30 overflow-hidden">
+                <div className="p-8 text-center">
+                  <Badge variant="outline" className="mb-4 border-primary/50 text-primary">
+                    LEADERSHIP
+                  </Badge>
+                  <div className="text-6xl mb-4">{currentPanel.flag}</div>
+                  <h2 className="text-3xl font-bold text-primary mb-2">{currentPanel.country}</h2>
+                  <p className="text-muted-foreground mb-2">{currentPanel.status}</p>
+                  <p className="text-muted-foreground max-w-md mx-auto">
+                    {currentPanel.description}
                   </p>
+                </div>
+              </Card>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 text-center">
-                    <div className="space-y-1">
-                      <Calendar className="w-4 h-4 mx-auto text-primary" />
-                      <p className="text-xs text-muted-foreground">Est.</p>
-                      <p className="text-sm font-semibold">{panel.established}</p>
+              {/* Details Grid */}
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                {/* Stats Card */}
+                <Card className="bg-card border-border hover:border-primary/50 transition-colors">
+                  <CardContent className="p-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <Calendar className="w-5 h-5 text-primary" />
+                        <div>
+                          <p className="text-xs text-muted-foreground">Established</p>
+                          <p className="text-lg font-semibold">{currentPanel.established}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Users className="w-5 h-5 text-primary" />
+                        <div>
+                          <p className="text-xs text-muted-foreground">Members</p>
+                          <p className="text-lg font-semibold">{currentPanel.members}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <MapPin className="w-5 h-5 text-primary" />
+                        <div>
+                          <p className="text-xs text-muted-foreground">Location</p>
+                          <p className="text-lg font-semibold">{currentPanel.location}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-1">
-                      <Users className="w-4 h-4 mx-auto text-primary" />
-                      <p className="text-xs text-muted-foreground">Members</p>
-                      <p className="text-sm font-semibold">{panel.members}</p>
-                    </div>
-                    <div className="space-y-1">
-                      <MapPin className="w-4 h-4 mx-auto text-primary" />
-                      <p className="text-xs text-muted-foreground">Location</p>
-                      <p className="text-sm font-semibold truncate">{panel.location}</p>
-                    </div>
-                  </div>
+                  </CardContent>
+                </Card>
 
-                  {/* Achievements */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Trophy className="w-4 h-4 text-primary" />
-                      <span className="text-sm font-medium">Achievements</span>
+                {/* Achievements Card */}
+                <Card className="bg-card border-border hover:border-primary/50 transition-colors">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Trophy className="w-5 h-5 text-primary" />
+                      <span className="font-medium">Achievements</span>
                     </div>
-                    <ul className="space-y-1">
-                      {panel.achievements.map((achievement, idx) => (
-                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
+                    <ul className="space-y-2">
+                      {currentPanel.achievements.map((achievement, idx) => (
+                        <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <span className="text-primary mt-0.5">•</span>
                           {achievement}
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </CardContent>
+                </Card>
 
-                  {/* Focus Areas */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Target className="w-4 h-4 text-primary" />
-                      <span className="text-sm font-medium">Focus Areas</span>
+                {/* Focus Areas Card */}
+                <Card className="bg-card border-border hover:border-primary/50 transition-colors">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Target className="w-5 h-5 text-primary" />
+                      <span className="font-medium">Focus Areas</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {panel.focus.map((area, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
+                      {currentPanel.focus.map((area, idx) => (
+                        <Badge key={idx} variant="outline" className="border-primary/30 text-primary">
                           {area}
                         </Badge>
                       ))}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </main>
 
