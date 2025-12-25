@@ -1,58 +1,76 @@
-# Global Youth Robotics Movement
+# Oxygen Robotics International Platform
 
-A full-stack platform for the Global Youth Robotics Movement, featuring an interactive frontend and a robust backend for community engagement and international collaboration.
+## Overview
 
-## 🚀 Features
+A full-stack web platform for the Global Youth Robotics Movement (Oxygen Robotics International). The application serves as the digital presence for a youth-led robotics organization with chapters in Bangladesh, Pakistan, and Malaysia. It features an interactive showcase website with pages for About, Gallery, International chapter information, and a Panel for chapter management, along with a backend API for contact form submissions.
 
-- **Interactive Globe**: Visualize the global reach of the movement.
-- **Partner Showcase**: Highlighting key collaborations with organizations like Oxygen, BBA, Kip, and Orwa.
-- **International Portal**: Dedicated space for global participation.
-- **Community Panel**: Centralized management for movement updates.
-- **Contact Integration**: Backend API for secure communication.
+## User Preferences
 
-## 🛠️ Technology Stack
+Preferred communication style: Simple, everyday language.
 
-### Frontend
-- **Framework**: React with Vite
-- **Styling**: Tailwind CSS & shadcn/ui
-- **Animations**: Framer Motion
-- **Routing**: Wouter
-- **Data Fetching**: TanStack Query (React Query)
+## System Architecture
 
-### Backend
-- **Server**: Express.js
-- **Database**: PostgreSQL with Drizzle ORM
-- **Deployment**: Configured for Vercel and Replit
+### Frontend Architecture
+- **Framework**: React 18 with TypeScript, bundled using Vite
+- **Routing**: React Router DOM v6 for client-side navigation
+- **State Management**: TanStack Query (React Query) for server state and data fetching
+- **Styling**: Tailwind CSS with CSS variables for theming, using a dark "industrial futurism" design system
+- **UI Components**: shadcn/ui component library (Radix UI primitives) with custom styling
+- **Animations**: Framer Motion for page transitions and interactive elements
+- **Design System**: Custom Oxygen Robotics theme with cyan accent color (#00F0FF) on dark backgrounds
 
-## 📦 Project Structure
+### Backend Architecture
+- **Server**: Express.js (v5) running on port 5000
+- **API Design**: RESTful endpoints under `/api/` prefix
+- **Current Endpoints**: POST `/api/contact` for contact form submissions
+- **Storage**: In-memory storage (MemStorage class) - designed to be swappable with database implementation
+- **Schema Validation**: Zod schemas with Drizzle-Zod integration for type-safe validation
 
-```text
-├── src/                # Frontend source code
-│   ├── components/     # UI components & sections
-│   ├── pages/          # Application pages (Index, About, Gallery, etc.)
-│   └── hooks/          # Custom React hooks
-├── server/             # Backend Express server
-├── shared/             # Shared TypeScript schemas (Drizzle)
-└── public/             # Static assets
+### Data Layer
+- **ORM**: Drizzle ORM with PostgreSQL schema definitions
+- **Schema Location**: `shared/schema.ts` contains shared types between frontend and backend
+- **Current Models**: Messages table (id, name, email, message)
+- **Note**: Database connection is prepared for PostgreSQL via Neon serverless driver but currently uses in-memory storage
+
+### Project Structure
+```
+├── src/                    # Frontend React application
+│   ├── components/         # Reusable UI components
+│   │   └── ui/            # shadcn/ui component library
+│   ├── pages/             # Route pages (Index, About, Gallery, Panel, International)
+│   ├── hooks/             # Custom React hooks
+│   └── lib/               # Utility functions
+├── server/                 # Backend Express server
+│   ├── index.ts           # Server entry point
+│   ├── routes.ts          # API route definitions
+│   └── storage.ts         # Data storage abstraction
+├── shared/                 # Shared TypeScript schemas
+│   └── schema.ts          # Drizzle ORM schema definitions
+└── public/                 # Static assets
 ```
 
-## 🔧 Getting Started
+### Path Aliases
+- `@/*` maps to `./src/*` for clean imports
 
-1. Install dependencies:
-   ```sh
-   npm install
-   ```
+## External Dependencies
 
-2. Start the development server:
-   ```sh
-   npm run dev
-   ```
+### Third-Party Services
+- **Neon Database**: PostgreSQL serverless driver (`@neondatabase/serverless`) - prepared but not actively connected
+- **Vercel**: Deployment configuration in `vercel.json` for serverless deployment
+- **Google Fonts**: JetBrains Mono for monospace typography, Inter for body text
 
-3. Build for production:
-   ```sh
-   npm run build
-   ```
+### Key NPM Packages
+- **UI Framework**: Full shadcn/ui component set (Radix UI primitives)
+- **Forms**: React Hook Form with Zod resolver for validation
+- **Data Fetching**: TanStack Query v5
+- **Styling**: Tailwind CSS, class-variance-authority, clsx, tailwind-merge
+- **Animations**: Framer Motion
+- **Date Handling**: date-fns
+- **Carousel**: Embla Carousel React
+- **Icons**: Lucide React
 
-## 🌐 Deployment
-
-This project is configured for seamless deployment on Replit and Vercel. Ensure your environment variables are configured in your deployment settings.
+### Development Tools
+- **Build**: Vite with React SWC plugin
+- **TypeScript**: Configured for both browser (tsconfig.app.json) and Node (tsconfig.node.json)
+- **Linting**: ESLint with TypeScript and React hooks plugins
+- **Component Tagging**: lovable-tagger (development mode only)
