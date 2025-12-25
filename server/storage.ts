@@ -1,4 +1,4 @@
-import { messages, type Message, type InsertMessage } from "./schema";
+import { messages, type Message, type InsertMessage } from "../shared/schema";
 
 export interface IStorage {
   createMessage(message: InsertMessage): Promise<Message>;

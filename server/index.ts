@@ -1,4 +1,4 @@
-import express, { type Express } from "express";
+import express from "express";
 import { registerRoutes } from "./routes";
 
 const app = express();
@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: false }));
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
     res.status(status).json({ message });
-    throw err;
   });
 
   const PORT = 5000;
