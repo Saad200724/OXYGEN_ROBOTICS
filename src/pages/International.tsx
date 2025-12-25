@@ -53,6 +53,8 @@ const International = () => {
     "AI/ML Enthusiast",
     "Robotics Programmer",
     "Hardware Specialist",
+    "Web Development",
+    "SaaS Startup",
     "Social Media Manager",
     "Researcher",
     "Graphic Designer",
