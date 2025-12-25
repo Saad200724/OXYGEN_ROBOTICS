@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
+import orwaLogo from "@/assets/orwa-logo.png";
+import bbaLogo from "@/assets/bba-logo.png";
+import kipLogo from "@/assets/kip-logo.png";
 
 const PartnersSection = () => {
   const partners = [
-    { name: "Biman Bangladesh Airlines", initials: "BBA" },
-    { name: "Old Remians Welfare Association", initials: "ORWA" },
-    { name: "KIP Hotel", initials: "KIP" },
+    { name: "Biman Bangladesh Airlines", logo: bbaLogo },
+    { name: "Old Remians Welfare Association", logo: orwaLogo },
+    { name: "KIP Hotel", logo: kipLogo },
   ];
 
   return (
@@ -27,7 +30,7 @@ const PartnersSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
+          className="flex flex-wrap justify-center items-center gap-12 md:gap-20"
         >
           {partners.map((partner, index) => (
             <motion.div
@@ -38,16 +41,14 @@ const PartnersSection = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="group"
             >
-              {/* Placeholder logo - monochrome style */}
-              <div className="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity duration-300">
-                <div className="w-24 h-16 flex items-center justify-center border border-border rounded bg-secondary/30 group-hover:border-primary/50 transition-colors">
-                  <span className="font-mono text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-                    {partner.initials}
-                  </span>
+              <div className="flex flex-col items-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <div className="h-16 flex items-center justify-center">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="h-full w-auto max-w-[140px] object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
+                  />
                 </div>
-                <span className="font-mono text-xs text-muted-foreground text-center max-w-[120px]">
-                  {partner.name}
-                </span>
               </div>
             </motion.div>
           ))}
