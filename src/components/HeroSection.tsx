@@ -140,7 +140,7 @@ const HeroSection = () => {
               transition={{ delay: 1.7 }}
             >
               <span className="text-muted-foreground">NODES:</span>{" "}
-              <span className="text-primary">2 ACTIVE</span>
+              <span className="text-primary">3 ACTIVE</span>
             </motion.div>
           </motion.div>
         </div>
