@@ -1,98 +1,73 @@
-# Global Youth Robotics Movement
+# Welcome to your Lovable project
 
-A fullstack web application built with React, TypeScript, Vite, Express, and Tailwind CSS.
+## Project info
 
-## Project Overview
+**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
-Building a Global Youth Robotics Movement - uniting the brightest young minds across borders to design, solve, and lead through robotics and AI.
+## How can I edit this code?
 
-## Features
+There are several ways of editing your application.
 
-- Modern, responsive UI with shadcn components
-- TypeScript for type safety
-- React Router for navigation
-- TanStack Query for data fetching
-- Tailwind CSS for styling
-- Dark mode support
+**Use Lovable**
 
-## Tech Stack
+Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
-- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS
-- **Backend**: Express.js, Node.js
-- **Tools**: shadcn-ui, React Hook Form, TanStack Query
-- **Styling**: Tailwind CSS with dark mode support
+Changes made via Lovable will be committed automatically to this repo.
 
-## Development
+**Use your preferred IDE**
 
-### Prerequisites
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-- Node.js 18+ and npm
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-### Setup
+Follow these steps:
 
-```bash
-# Install dependencies
-npm install
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-# Start development server
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-The application will be available at `http://localhost:5000`
+**Edit a file directly in GitHub**
 
-### Build
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-```bash
-# Build for production
-npm run build
+**Use GitHub Codespaces**
 
-# Preview production build
-npm run preview
-```
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-### Linting
+## What technologies are used for this project?
 
-```bash
-npm run lint
-```
+This project is built with:
 
-## Project Structure
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-```
-├── client/              # Frontend React application
-│   ├── src/
-│   │   ├── components/  # React components
-│   │   ├── pages/       # Page components
-│   │   ├── hooks/       # Custom hooks
-│   │   ├── lib/         # Utility functions
-│   │   └── App.tsx      # Main app component
-│   └── public/          # Static assets
-├── server/              # Backend Express server
-│   └── index.ts         # Server entry point
-├── shared/              # Shared types and schemas
-│   └── schema.ts        # Data schemas
-└── package.json         # Dependencies and scripts
-```
+## How can I deploy this project?
 
-## Pages
+Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
-- **Home** (`/`) - Landing page with hero section
-- **About** (`/about`) - About the movement
-- **International** (`/international`) - International programs
-- **Gallery** (`/gallery`) - Gallery of events and projects
-- **Panel** (`/panel`) - Panel information
+## Can I connect a custom domain to my Lovable project?
 
-## Development Guidelines
+Yes, you can!
 
-This project follows modern web development best practices:
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-- Component-based architecture
-- Type-safe code with TypeScript
-- Responsive design with Tailwind CSS
-- Accessible UI components from shadcn
-- Client-side state management with React hooks
-- Server-side data management with Express
-
-## License
-
-MIT
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
