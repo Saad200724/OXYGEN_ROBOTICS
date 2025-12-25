@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import oxygenLogo from "@/assets/oxygen-logo.png";
 
 const Navigation = () => {
@@ -9,57 +9,69 @@ const Navigation = () => {
   const location = useLocation();
 
   const links = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "International", href: "/international" },
-    { label: "Gallery", href: "/gallery" },
+    { label: "HOME", href: "/" },
+    { label: "ABOUT", href: "/about" },
+    { label: "INTERNATIONAL", href: "/international" },
+    { label: "GALLERY", href: "/gallery" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
       <div className="container max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <img src={oxygenLogo} alt="Oxygen Robotics" className="h-8 w-auto" />
-            <span className="font-display font-bold text-lg hidden sm:block">
-              Oxygen Robotics
-            </span>
-          </Link>
+        <div className="flex items-center justify-center h-20">
+          {/* Centered Nav Container */}
+          <div className="hidden md:flex items-center gap-8 px-6 py-3 rounded-full border border-border bg-background/50 backdrop-blur-md">
+            {/* Logo */}
+            <Link to="/" className="flex items-center">
+              <img src={oxygenLogo} alt="Oxygen Robotics" className="h-6 w-auto" />
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={`font-mono text-sm transition-colors ${
-                  isActive(link.href)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {/* Navigation Links with Separators */}
+            <div className="flex items-center">
+              {links.map((link, index) => (
+                <div key={link.href} className="flex items-center">
+                  <Link
+                    to={link.href}
+                    className={`font-mono text-xs tracking-wide transition-colors px-3 ${
+                      isActive(link.href)
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                  {index < links.length - 1 && (
+                    <span className="text-border">|</span>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
             <Link
               to="/international"
-              className="font-mono text-sm px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors"
+              className="flex items-center gap-2 font-mono text-xs px-4 py-2 border border-foreground text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors"
             >
-              Join Us
+              <ArrowRight className="w-3 h-3" />
+              <span>Start now</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: Logo and Menu Button */}
+          <div className="md:hidden flex items-center justify-between w-full">
+            <Link to="/" className="flex items-center">
+              <img src={oxygenLogo} alt="Oxygen Robotics" className="h-6 w-auto" />
+            </Link>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-foreground"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -89,9 +101,10 @@ const Navigation = () => {
                 <Link
                   to="/international"
                   onClick={() => setIsOpen(false)}
-                  className="block font-mono text-sm px-4 py-2 bg-primary text-primary-foreground rounded text-center hover:bg-primary/90 transition-colors"
+                  className="flex items-center justify-center gap-2 font-mono text-sm px-4 py-2 border border-foreground text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors"
                 >
-                  Join Us
+                  <ArrowRight className="w-4 h-4" />
+                  <span>Start now</span>
                 </Link>
               </div>
             </motion.div>
