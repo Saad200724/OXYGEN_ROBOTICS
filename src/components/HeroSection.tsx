@@ -1,150 +1,156 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import AnimatedGlobe from "./AnimatedGlobe";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-matrix">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
-      {/* Scan line effect */}
-      <div className="absolute inset-0 scan-line pointer-events-none opacity-30" />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       
-      <div className="container relative z-10 px-4 py-20">
+      <div className="container relative z-10 max-w-6xl mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
-          >
-            {/* Tag */}
+          {/* Left Column - Text Content */}
+          <div className="space-y-8">
+            {/* Status Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-secondary border border-border rounded-full"
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5"
             >
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse-glow" />
-              <span className="text-sm font-mono text-muted-foreground">
-                GLOBAL R&D ECOSYSTEM v2.0
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="font-mono text-xs text-primary">
+                FOUNDED 2022 · DHAKA, BANGLADESH
               </span>
             </motion.div>
 
-            {/* Main Headline */}
-            <div className="space-y-4">
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground"
-              >
-                WE BUILD
-              </motion.h1>
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-gradient-oxygen"
-              >
-                THE FOUNDERS.
-              </motion.h1>
-            </div>
-
-            {/* Sub-headline */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
-              Oxygen Robotics is a global R&D ecosystem. We don't just win competitions; 
-              we incubate market-ready products like{" "}
-              <span className="text-primary font-semibold">'PatientPal'</span> and{" "}
-              <span className="text-primary font-semibold">'Phoenix Echo'</span> to solve 
-              real-world problems.
+              <span className="text-foreground">Building a </span>
+              <span className="text-primary glitch-text">Global Youth</span>
+              <br />
+              <span className="text-foreground">Robotics Movement</span>
+            </motion.h1>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-lg text-muted-foreground max-w-xl font-mono"
+            >
+              Fueled by Curiosity. Built on Struggle. Engineered for Sovereignty.
+            </motion.p>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="text-muted-foreground max-w-xl"
+            >
+              We unite the brightest young minds across borders to design, solve, 
+              and lead through robotics and AI. This is just the beginning.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <Button 
-                size="lg" 
-                className="glitch-hover oxygen-glow bg-primary text-primary-foreground hover:bg-primary/90 font-mono text-sm uppercase tracking-wider px-8"
+              <Link
+                to="/international"
+                className="group px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-all"
               >
-                Deploy a Chapter
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="glitch-hover border-primary/50 text-primary hover:bg-primary/10 font-mono text-sm uppercase tracking-wider px-8"
+                <span className="flex items-center gap-2">
+                  Start a Chapter
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </span>
+              </Link>
+              <Link
+                to="/about"
+                className="px-6 py-3 border border-border text-foreground font-mono text-sm rounded hover:bg-secondary/50 transition-all"
               >
-                View Portfolio
-              </Button>
+                Our Story
+              </Link>
             </motion.div>
 
             {/* Stats */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="flex gap-8 pt-8 border-t border-border"
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="flex gap-8 pt-4"
             >
-              {[
-                { value: "2", label: "Active Regions" },
-                { value: "3+", label: "R&D Projects" },
-                { value: "$1B", label: "Target Valuation" },
-              ].map((stat, i) => (
-                <div key={i} className="space-y-1">
-                  <p className="text-2xl md:text-3xl font-bold text-primary font-mono">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+              <div>
+                <div className="font-display text-2xl font-bold text-primary">3+</div>
+                <div className="font-mono text-xs text-muted-foreground">Years Building</div>
+              </div>
+              <div>
+                <div className="font-display text-2xl font-bold text-primary">3</div>
+                <div className="font-mono text-xs text-muted-foreground">Active Regions</div>
+              </div>
+              <div>
+                <div className="font-display text-2xl font-bold text-primary">∞</div>
+                <div className="font-mono text-xs text-muted-foreground">Possibilities</div>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Globe */}
+          {/* Right Column - Globe */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
+            transition={{ delay: 0.4, duration: 0.8 }}
             className="relative"
           >
             <AnimatedGlobe />
             
-            {/* Floating data points */}
+            {/* Globe Status */}
             <motion.div
-              className="absolute top-10 right-10 px-3 py-2 bg-card/80 backdrop-blur border border-border rounded font-mono text-xs"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: 1.5 }}
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 font-mono text-xs text-center space-y-1"
             >
-              <span className="text-muted-foreground">STATUS:</span>{" "}
-              <span className="text-primary">OPERATIONAL</span>
-            </motion.div>
-            
-            <motion.div
-              className="absolute bottom-20 left-0 px-3 py-2 bg-card/80 backdrop-blur border border-border rounded font-mono text-xs"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.7 }}
-            >
-              <span className="text-muted-foreground">REGIONS:</span>{" "}
-              <span className="text-primary">3 ACTIVE</span>
+              <div>
+                <span className="text-muted-foreground">REGIONS:</span>{" "}
+                <span className="text-primary">3 ACTIVE</span>
+              </div>
+              <div className="text-muted-foreground/60">
+                Bangladesh · Pakistan · Malaysia
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-border flex justify-center">
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-1.5 h-1.5 bg-primary rounded-full mt-2"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 };
