@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import oxygenLogo from "@/assets/oxygen-logo.png";
 
 const Footer = () => {
   const links = [
@@ -19,9 +20,7 @@ const Footer = () => {
         >
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded bg-primary/20 flex items-center justify-center">
-              <span className="font-mono text-primary font-bold text-sm">O₂</span>
-            </div>
+            <img src={oxygenLogo} alt="Oxygen Robotics" className="h-8 w-auto" />
             <div className="text-sm text-muted-foreground">
               © 2025 <span className="text-foreground font-semibold">Oxygen Robotics International</span>. 
               A Global R&D Entity.
