@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import InteractiveGlobe from "./InteractiveGlobe";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [liveUpdates, setLiveUpdates] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch('/api/projects/live')
+      .then(res => res.json())
+      .then(data => {
+        setLiveUpdates(data.map((p: any) => `[LIVE] ${p.title.toUpperCase()}: ${p.status} - ${p.description}`));
+      });
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Grid Pattern */}
@@ -10,6 +21,27 @@ const HeroSection = () => {
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      
+      {/* Live Ticker */}
+      <div className="absolute top-20 left-0 w-full bg-primary/5 border-y border-primary/10 py-2 overflow-hidden z-20">
+        <motion.div
+          animate={{ x: [0, -1000] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex gap-12 whitespace-nowrap"
+        >
+          {liveUpdates.length > 0 ? (
+            [...liveUpdates, ...liveUpdates].map((update, i) => (
+              <span key={i} className="font-mono text-[10px] tracking-widest text-primary/80">
+                {update}
+              </span>
+            ))
+          ) : (
+            <span className="font-mono text-[10px] tracking-widest text-primary/80">
+              [LIVE] INITIALIZING SYSTEM... [LIVE] CONNECTING TO GLOBAL CHAPTERS... [LIVE] SYNCING R&D DATABASE...
+            </span>
+          )}
+        </motion.div>
+      </div>
       
       <div className="container relative z-10 max-w-6xl mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

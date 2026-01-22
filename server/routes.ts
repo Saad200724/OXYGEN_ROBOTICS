@@ -14,6 +14,21 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
+  app.get("/api/chapters", async (_req, res) => {
+    const chapters = await storage.getChapters();
+    res.json(chapters);
+  });
+
+  app.get("/api/projects", async (_req, res) => {
+    const projects = await storage.getProjects();
+    res.json(projects);
+  });
+
+  app.get("/api/projects/live", async (_req, res) => {
+    const projects = await storage.getLiveProjects();
+    res.json(projects);
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
