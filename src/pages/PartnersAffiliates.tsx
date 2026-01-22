@@ -14,10 +14,7 @@ const PartnersData: Record<string, { strategic: { name: string, logo: string }[]
       { name: "KIP Hotel", logo: kipLogo },
     ],
     affiliates: [
-      { entity: "Sinology", date: "Est. 2026", scope: "International Collaboration" },
-      { entity: "University of Innovation", date: "Est. 2026", scope: "Joint Research & Internship" },
-      { entity: "Global Tech Council", date: "Est. 2026", scope: "Standardization & Ethics" },
-      { entity: "Robotics Hub Asia", date: "Est. 2026", scope: "Resource Sharing" },
+      { entity: "Sinology", date: "Est. 2026", scope: "International Collaboration" }
     ]
   },
   "2025": {
@@ -26,10 +23,7 @@ const PartnersData: Record<string, { strategic: { name: string, logo: string }[]
       { name: "Old Remians Welfare Association", logo: orwaLogo },
       { name: "KIP Hotel", logo: kipLogo },
     ],
-    affiliates: [
-      { entity: "National Science Academy", date: "Est. 2025", scope: "Curriculum Development" },
-      { entity: "Regional Innovation Fund", date: "Est. 2025", scope: "Startup Support" }
-    ]
+    affiliates: []
   }
 };
 
