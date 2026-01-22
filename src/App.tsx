@@ -8,6 +8,9 @@ import About from "./pages/About";
 import International from "./pages/International";
 import Gallery from "./pages/Gallery";
 import Panel from "./pages/Panel";
+import Projects from "./pages/Projects";
+import Events from "./pages/Events";
+import Join from "./pages/Join";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +27,9 @@ const App = () => (
           <Route path="/international" element={<International />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/panel" element={<Panel />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/join" element={<Join />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
