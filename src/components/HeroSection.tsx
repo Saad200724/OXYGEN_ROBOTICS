@@ -23,9 +23,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mx-auto lg:mx-0"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="font-mono text-xs text-primary">
-                FOUNDED 2022 · DHAKA, BANGLADESH
-              </span>
+              <span className="font-mono text-xs text-primary leading-none">FOUNDED 2022 · DHAKA, BANGLADESH</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -113,7 +111,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative hidden md:block"
+            className="relative"
           >
             <InteractiveGlobe />
             
@@ -141,7 +139,7 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
       >
         <div className="w-6 h-10 rounded-full border-2 border-border flex justify-center">
           <motion.div
