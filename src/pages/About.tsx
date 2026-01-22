@@ -319,29 +319,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section id="partners" className="py-20 px-4 bg-card/30 border-t border-border scroll-mt-24">
-        <div className="container max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="space-y-4">
-              <span className="font-mono text-primary text-sm uppercase tracking-widest">// STRATEGIC PARTNERS</span>
-              <h2 className="font-display text-3xl font-bold mt-4">Building The Future Together</h2>
-            </div>
-            <div className="flex flex-wrap justify-center gap-12 opacity-50">
-              <div className="font-display font-bold text-2xl tracking-tighter">PARTNER_01</div>
-              <div className="font-display font-bold text-2xl tracking-tighter">PARTNER_02</div>
-              <div className="font-display font-bold text-2xl tracking-tighter">PARTNER_03</div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <Footer />
     </main>
   );
 };
