@@ -41,10 +41,10 @@ const Footer = () => {
               ))}
             </div>
             <div className="text-[10px] font-mono text-muted-foreground border-l border-border pl-4 hidden md:block">
-              Powered by <a href="https://znforge.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ZnForge (znforge.dev)</a>
+              Powered by <a href="https://znforge.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ZnForge</a>
             </div>
             <div className="text-[10px] font-mono text-muted-foreground md:hidden">
-              Powered by <a href="https://znforge.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ZnForge (znforge.dev)</a>
+              Powered by <a href="https://znforge.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ZnForge</a>
             </div>
           </div>
         </motion.div>
