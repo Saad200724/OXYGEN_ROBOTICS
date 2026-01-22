@@ -22,22 +22,30 @@ const Footer = () => {
           <div className="flex items-center gap-3">
             <img src={oxygenLogo} alt="Oxygen Robotics" className="h-8 w-auto" />
             <div className="text-sm text-muted-foreground">
-              © 2025 <span className="text-foreground font-semibold">Oxygen Robotics International</span>. 
+              © 2026 <span className="text-foreground font-semibold">Oxygen Robotics International</span>. 
               A Global R&D Entity.
             </div>
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-6">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors glitch-hover"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <div className="flex items-center gap-6">
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="font-mono text-xs text-muted-foreground hover:text-primary transition-colors glitch-hover"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+            <div className="text-[10px] font-mono text-muted-foreground border-l border-border pl-4 hidden md:block">
+              Powered by <a href="https://znforge.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ZnForge (znforge.dev)</a>
+            </div>
+            <div className="text-[10px] font-mono text-muted-foreground md:hidden">
+              Powered by <a href="https://znforge.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ZnForge (znforge.dev)</a>
+            </div>
           </div>
         </motion.div>
 
