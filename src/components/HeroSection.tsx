@@ -4,14 +4,14 @@ import InteractiveGlobe from "./InteractiveGlobe";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 md:pt-16">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       
-      <div className="container relative z-10 max-w-6xl mx-auto px-4 py-20">
+      <div className="container relative z-10 max-w-6xl mx-auto px-4 py-10 md:py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-6 md:space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start w-full overflow-hidden">
