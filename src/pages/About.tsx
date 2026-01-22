@@ -272,7 +272,7 @@ const About = () => {
                     
                     {/* Placeholder for Photo with Initial */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-32 h-32 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center text-primary font-display text-5xl font-bold group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-700">
+                      <div className="w-32 h-32 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center text-primary font-display text-5xl font-bold group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-700 -translate-y-12">
                         {founder.initial}
                       </div>
                     </div>
