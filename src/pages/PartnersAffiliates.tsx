@@ -5,8 +5,9 @@ import Footer from "@/components/Footer";
 import orwaLogo from "@/assets/orwa-logo.png";
 import bbaLogo from "@/assets/bba-logo.png";
 import kipLogo from "@/assets/kip-logo.png";
+import sinologyLogo from "/assets/sinology-logo.png";
 
-const PartnersData: Record<string, { strategic: { name: string, logo: string }[], affiliates: { entity: string, date: string, scope: string }[] }> = {
+const PartnersData: Record<string, { strategic: { name: string, logo: string }[], affiliates: { entity: string, date: string, scope: string, logo?: string }[] }> = {
   "2026": {
     strategic: [
       { name: "Biman Bangladesh Airlines", logo: bbaLogo },
@@ -14,7 +15,7 @@ const PartnersData: Record<string, { strategic: { name: string, logo: string }[]
       { name: "KIP Hotel", logo: kipLogo },
     ],
     affiliates: [
-      { entity: "Sinology", date: "Est. 2026", scope: "International Collaboration" }
+      { entity: "Sinology", date: "Est. 2026", scope: "International Collaboration", logo: sinologyLogo }
     ]
   },
   "2025": {
@@ -137,9 +138,16 @@ const PartnersAffiliates = () => {
                     viewport={{ once: true }}
                     className="p-8 border border-border rounded-2xl bg-card/30 flex justify-between items-center group hover:bg-card/50 transition-colors"
                   >
-                    <div>
-                      <h3 className="font-display text-xl font-bold mb-1">{mou.entity}</h3>
-                      <p className="text-primary font-mono text-[10px] uppercase tracking-widest">{mou.scope}</p>
+                    <div className="flex items-center gap-6">
+                      {mou.logo && (
+                        <div className="w-16 h-16 rounded-xl overflow-hidden border border-border bg-white p-2">
+                          <img src={mou.logo} alt={mou.entity} className="w-full h-full object-contain" />
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="font-display text-xl font-bold mb-1">{mou.entity}</h3>
+                        <p className="text-primary font-mono text-[10px] uppercase tracking-widest">{mou.scope}</p>
+                      </div>
                     </div>
                     <div className="text-right">
                       <div className="font-mono text-xs text-muted-foreground">{mou.date}</div>
@@ -161,7 +169,7 @@ const PartnersAffiliates = () => {
             We are always looking for visionary partners to expand our reach and impact.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="mailto:partnerships@oxygenrobotics.org" className="px-8 py-4 bg-primary text-primary-foreground font-mono text-sm rounded-full hover:bg-primary/90 transition-all">
+            <a href="/partner" className="px-8 py-4 bg-primary text-primary-foreground font-mono text-sm rounded-full hover:bg-primary/90 transition-all">
               Propose Partnership
             </a>
             <a href="/join" className="px-8 py-4 border border-border text-foreground font-mono text-sm rounded-full hover:bg-secondary/50 transition-all">
