@@ -14,10 +14,10 @@ const PartnersData: Record<string, { strategic: { name: string, logo: string }[]
       { name: "KIP Hotel", logo: kipLogo },
     ],
     affiliates: [
+      { entity: "Sinology", date: "Est. 2026", scope: "International Collaboration" },
       { entity: "University of Innovation", date: "Est. 2026", scope: "Joint Research & Internship" },
       { entity: "Global Tech Council", date: "Est. 2026", scope: "Standardization & Ethics" },
       { entity: "Robotics Hub Asia", date: "Est. 2026", scope: "Resource Sharing" },
-      { entity: "Future Labs Initiative", date: "Est. 2026", scope: "Talent Development" }
     ]
   },
   "2025": {
