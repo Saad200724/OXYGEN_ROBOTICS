@@ -117,17 +117,24 @@ const HeroSection = () => {
             
             {/* Globe Status */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-              className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 font-mono text-xs text-center space-y-1 z-20"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-full max-w-[280px] z-20"
             >
-              <div>
-                <span className="text-muted-foreground">REGIONS:</span>{" "}
-                <span className="text-primary">3 ACTIVE</span>
-              </div>
-              <div className="text-muted-foreground/60">
-                Bangladesh · Pakistan · Kazakhstan
+              <div className="bg-background/80 backdrop-blur-sm border border-primary/20 rounded-lg p-3 text-center space-y-2 shadow-xl shadow-primary/5">
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  <span className="font-mono text-[10px] tracking-tight text-primary uppercase font-bold">Oxygen Active Regions</span>
+                </div>
+                <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                <div className="space-y-1">
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-tighter">Global Movement</div>
+                  <div className="font-display text-sm font-bold text-foreground">REGIONS: 3 ACTIVE</div>
+                </div>
+                <div className="text-[10px] font-mono text-primary/80 bg-primary/5 py-1 px-2 rounded border border-primary/10">
+                  Bangladesh · Pakistan · Kazakhstan
+                </div>
               </div>
             </motion.div>
           </motion.div>
