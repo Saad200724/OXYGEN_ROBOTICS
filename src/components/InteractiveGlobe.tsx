@@ -35,15 +35,17 @@ const InteractiveGlobe = () => {
     </div>
   `;
 
-  const handlePolygonClick = (d) => {
+  const handlePolygonClick = (d: any) => {
     if (targetCountries.includes(d.properties.NAME)) {
       setSelectedCountry(d.properties);
       // Auto-rotate to center the clicked country
-      globeEl.current.pointOfView({
-        lat: d.properties.LABEL_Y || 23,
-        lng: d.properties.LABEL_X || 80,
-        altitude: 1.5
-      }, 1000);
+      if (globeEl.current) {
+        (globeEl.current as any).pointOfView({
+          lat: d.properties.LABEL_Y || 23,
+          lng: d.properties.LABEL_X || 80,
+          altitude: 1.5
+        }, 1000);
+      }
     }
   };
 
@@ -60,7 +62,7 @@ const InteractiveGlobe = () => {
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
         polygonsData={countries.features}
         polygonSideColor={() => 'rgba(0, 229, 255, 0.05)'}
-        polygonStrokeColor={(d) => targetCountries.includes(d.properties.NAME) ? oxygenCyan : 'rgba(255, 255, 255, 0.1)'}
+        polygonStrokeColor={(d: any) => targetCountries.includes(d.properties.NAME) ? oxygenCyan : 'rgba(255, 255, 255, 0.1)'}
         polygonCapColor={getPolygonColor}
         polygonLabel={getPolygonLabel}
         onPolygonHover={setHoverD}
