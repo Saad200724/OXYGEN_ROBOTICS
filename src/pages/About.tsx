@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useScrollToHash } from "@/hooks/use-scroll-to-hash";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const About = () => {
   useScrollToHash();
@@ -286,6 +287,20 @@ const About = () => {
                         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                           {founder.role}
                         </p>
+                        <div className="flex gap-3 pt-2">
+                          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Twitter className="w-4 h-4" />
+                          </a>
+                          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Facebook className="w-4 h-4" />
+                          </a>
+                          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Instagram className="w-4 h-4" />
+                          </a>
+                          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                        </div>
                         <div className="pt-4 flex items-center gap-2 text-[10px] font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                           <span>VIEW CHRONICLES</span>
                           <span className="text-primary">→</span>
