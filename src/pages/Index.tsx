@@ -12,23 +12,23 @@ const Index = () => {
   const highlights = [
     {
       icon: Rocket,
-      title: "Innovation First",
-      description: "Creating real-world solutions through AI and Robotics",
+      title: "R&D",
+      description: "Research and development in AI and Robotics",
     },
     {
       icon: Users,
-      title: "Youth-Led",
-      description: "Built by young minds, for young minds across the globe",
+      title: "Educational Initiative",
+      description: "Empowering students through technical workshops",
     },
     {
       icon: Globe,
-      title: "Global Network",
-      description: "Chapters in Bangladesh, Pakistan, and Malaysia",
+      title: "Student/Youth Led",
+      description: "Operated by passionate young innovators",
     },
     {
       icon: Award,
-      title: "Award Winning",
-      description: "Recognized at major international competitions",
+      title: "50+ member",
+      description: "A growing community of global creators",
     },
   ];
 
