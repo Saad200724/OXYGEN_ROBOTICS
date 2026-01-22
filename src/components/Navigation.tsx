@@ -77,7 +77,7 @@ const Navigation = () => {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="absolute top-full left-0 w-full mt-0 bg-background border-b border-border shadow-xl rounded-none">
                       <div className="container max-w-7xl mx-auto py-8 px-4">
-                        <ul className="flex flex-wrap gap-x-16 gap-y-4">
+                        <ul className="grid grid-cols-3 gap-x-16 gap-y-8 max-w-3xl">
                           {item.subLinks.map((sub) => (
                             <li key={sub.href} className="min-w-[150px]">
                               <NavigationMenuLink asChild>
