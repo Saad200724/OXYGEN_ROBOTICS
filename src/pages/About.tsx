@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -41,22 +40,24 @@ const About = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pt-24">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
+      {/* Our Story Section */}
+      <section id="story" className="py-20 px-4 scroll-mt-24">
         <div className="container max-w-4xl mx-auto text-center">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="font-mono text-primary text-sm uppercase tracking-widest"
           >
             // OUR STORY
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-5xl font-bold mt-4 mb-6"
           >
@@ -66,7 +67,8 @@ const About = () => {
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-muted-foreground text-lg max-w-2xl mx-auto"
           >
@@ -77,116 +79,11 @@ const About = () => {
         </div>
       </section>
 
-      {/* Vision Section */}
-      <section className="py-20 px-4 bg-card/30 border-y border-border">
-        <div className="container max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="font-mono text-primary text-sm uppercase tracking-widest">
-              // VISION
-            </span>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Short Term */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="p-6 border border-border rounded-lg bg-background/50"
-            >
-              <div className="font-mono text-xs text-primary mb-2">2-5 YEARS</div>
-              <h3 className="font-display text-xl font-bold mb-4">Short Term</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Build Oxygen Robotics International into a global R&D powerhouse that
-                unites engineers, builders, entrepreneurs, and leaders. Create a
-                collaborative and financially sustainable ecosystem with expert
-                mentorship, hands-on workshops, real-world problem-solving projects,
-                and startup building. Establish credible international chapters and
-                win international competitions.
-              </p>
-            </motion.div>
-
-            {/* Long Term */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="p-6 border border-border rounded-lg bg-background/50"
-            >
-              <div className="font-mono text-xs text-primary mb-2">5-10 YEARS</div>
-              <h3 className="font-display text-xl font-bold mb-4">Long Term</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Secure billion-dollar funding by strategically investing in and
-                taking equity stakes in startups we help build and support. This
-                financial foundation will enable us to grow into a powerful,
-                global youth-led R&D organization that drives transformative
-                innovation across industries while strengthening chapters,
-                mentorship programs, and workshops.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-20 px-4">
-        <div className="container max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="font-mono text-primary text-sm uppercase tracking-widest">
-              // MISSION
-            </span>
-            <h2 className="font-display text-3xl font-bold mt-4">What We Do</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {missions.map((mission, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-5 border border-border rounded-lg bg-card/30 hover:border-primary/50 transition-colors"
-              >
-                <div className="font-mono text-primary text-xs mb-3">
-                  0{index + 1}
-                </div>
-                <p className="text-sm text-foreground">{mission}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Timeline Section */}
       <section className="py-20 px-4 bg-card/30 border-y border-border">
         <div className="container max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="font-mono text-primary text-sm uppercase tracking-widest">
-              // TIMELINE
-            </span>
-            <h2 className="font-display text-3xl font-bold mt-4">Our Journey</h2>
-          </motion.div>
-
           <div className="relative">
-            {/* Timeline Line */}
             <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
-
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
@@ -198,22 +95,11 @@ const About = () => {
                   index % 2 === 0 ? "md:pr-[50%] md:text-right" : "md:pl-[50%]"
                 }`}
               >
-                {/* Dot */}
-                <div
-                  className={`absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full border-2 border-primary bg-background md:-translate-x-1/2`}
-                />
-
-                {/* Content */}
+                <div className="absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full border-2 border-primary bg-background md:-translate-x-1/2" />
                 <div className={`${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}>
-                  <div className="font-mono text-primary text-sm mb-2">
-                    {item.year}
-                  </div>
-                  <h3 className="font-display text-lg font-bold mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {item.description}
-                  </p>
+                  <div className="font-mono text-primary text-sm mb-2">{item.year}</div>
+                  <h3 className="font-display text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -221,27 +107,133 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="container max-w-3xl mx-auto text-center">
+      {/* Mission Section */}
+      <section id="mission" className="py-20 px-4 scroll-mt-24">
+        <div className="container max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center mb-12"
           >
-            <h2 className="font-display text-3xl font-bold mb-4">
-              Ready to Join the Movement?
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              Start a chapter in your country and be part of something bigger.
-            </p>
-            <Link
-              to="/international"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-all"
+            <span className="font-mono text-primary text-sm uppercase tracking-widest">// MISSION</span>
+            <h2 className="font-display text-3xl font-bold mt-4">Our Objective</h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {missions.map((mission, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-5 border border-border rounded-lg bg-card/30 hover:border-primary/50 transition-colors"
+              >
+                <div className="font-mono text-primary text-xs mb-3">0{index + 1}</div>
+                <p className="text-sm text-foreground">{mission}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Vision Section */}
+      <section id="vision" className="py-20 px-4 bg-card/30 border-y border-border scroll-mt-24">
+        <div className="container max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="font-mono text-primary text-sm uppercase tracking-widest">// VISION</span>
+            <h2 className="font-display text-3xl font-bold mt-4">The Future We Build</h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 border border-border rounded-lg bg-background/50"
             >
-              Explore International Chapters
-              <span>→</span>
-            </Link>
+              <div className="font-mono text-xs text-primary mb-2">2-5 YEARS</div>
+              <h3 className="font-display text-xl font-bold mb-4">Short Term</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Build Oxygen Robotics International into a global R&D powerhouse that unites engineers, builders, and leaders. Establish credible international chapters and win international competitions.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 border border-border rounded-lg bg-background/50"
+            >
+              <div className="font-mono text-xs text-primary mb-2">5-10 YEARS</div>
+              <h3 className="font-display text-xl font-bold mb-4">Long Term</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Secure billion-dollar funding by strategically investing in and taking equity stakes in startups we help build. Drive transformative innovation across industries while strengthening our global community.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founders Section */}
+      <section id="founders" className="py-20 px-4 scroll-mt-24">
+        <div className="container max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="font-mono text-primary text-sm uppercase tracking-widest">// OUR FOUNDERS</span>
+            <h2 className="font-display text-3xl font-bold mt-4">The Minds Behind Oxygen</h2>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: "Ilham Sajid", role: "Co-Founder" },
+              { name: "Fahim Aziz", role: "Co-Founder" },
+              { name: "Najmus Saadat Fahim", role: "Key Member" },
+              { name: "Md. Ahtesamul Rasul", role: "CTO" }
+            ].map((founder, index) => (
+              <motion.div
+                key={founder.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6 border border-border rounded-lg bg-card/30 text-center"
+              >
+                <div className="w-20 h-20 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-display font-bold text-xl">
+                  {founder.name[0]}
+                </div>
+                <h3 className="font-display font-bold text-foreground">{founder.name}</h3>
+                <p className="font-mono text-[10px] text-primary uppercase mt-1">{founder.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section id="partners" className="py-20 px-4 bg-card/30 border-t border-border scroll-mt-24">
+        <div className="container max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="space-y-4">
+              <span className="font-mono text-primary text-sm uppercase tracking-widest">// STRATEGIC PARTNERS</span>
+              <h2 className="font-display text-3xl font-bold mt-4">Building The Future Together</h2>
+            </div>
+            <div className="flex flex-wrap justify-center gap-12 opacity-50">
+              <div className="font-display font-bold text-2xl tracking-tighter">PARTNER_01</div>
+              <div className="font-display font-bold text-2xl tracking-tighter">PARTNER_02</div>
+              <div className="font-display font-bold text-2xl tracking-tighter">PARTNER_03</div>
+            </div>
           </motion.div>
         </div>
       </section>

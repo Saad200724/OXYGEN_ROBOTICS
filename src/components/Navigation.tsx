@@ -22,8 +22,9 @@ const Navigation = () => {
     {
       label: "About Us",
       subLinks: [
-        { label: "Our Story", href: "/about" },
-        { label: "Mission & Vision", href: "/about#vision" },
+        { label: "Our Story", href: "/about#story" },
+        { label: "Mission", href: "/about#mission" },
+        { label: "Vision", href: "/about#vision" },
         { label: "Our Founders", href: "/about#founders" },
         { label: "Strategic Partners", href: "/about#partners" },
       ],
