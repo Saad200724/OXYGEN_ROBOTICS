@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import AnimatedGlobe from "./AnimatedGlobe";
+import InteractiveGlobe from "./InteractiveGlobe";
 
 const HeroSection = () => {
   return (
@@ -115,21 +115,21 @@ const HeroSection = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="relative"
           >
-            <AnimatedGlobe />
+            <InteractiveGlobe />
             
             {/* Globe Status */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5 }}
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 font-mono text-xs text-center space-y-1"
+              className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 font-mono text-xs text-center space-y-1 z-20"
             >
               <div>
                 <span className="text-muted-foreground">REGIONS:</span>{" "}
                 <span className="text-primary">3 ACTIVE</span>
               </div>
               <div className="text-muted-foreground/60">
-                Bangladesh · Pakistan · Malaysia
+                Bangladesh · Pakistan · Kazakhstan
               </div>
             </motion.div>
           </motion.div>
