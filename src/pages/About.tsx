@@ -34,12 +34,10 @@ const About = () => {
   ];
 
   const missions = [
-    "Creating innovative solutions for existing problems through AI and Robotics",
-    "Establish and grow international chapters to build a global youth robotics community",
-    "Recruit and train young talents while providing mentorship from professors, engineers, and industry leaders",
-    "Build a financially sustainable model through sponsorships, partnerships and startups",
-    "Foster collaboration among members across countries for knowledge exchange and joint projects",
-    "Participate in international competitions to build global networks and strengthen credibility",
+    "Research & develop innovative technical solutions",
+    "Create mentorship & opportunity through events",
+    "Compete internationally",
+    "Create technical-social consultancy and business to support Oxygen Robotics financially",
   ];
 
   return (
