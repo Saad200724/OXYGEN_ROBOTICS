@@ -38,7 +38,7 @@ const PartnersAffiliates = () => {
       </section>
 
       {/* Strategic Partners Section */}
-      <section className="py-20 px-4 bg-card/10">
+      <section id="strategic" className="py-20 px-4 bg-card/10 scroll-mt-24">
         <div className="container max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div className="text-left">
@@ -68,7 +68,7 @@ const PartnersAffiliates = () => {
       </section>
 
       {/* Affiliated MOUs Section */}
-      <section className="py-20 px-4">
+      <section id="affiliates" className="py-20 px-4 scroll-mt-24">
         <div className="container max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div className="text-left">
