@@ -83,25 +83,21 @@ const About = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 px-4 bg-card/30 border-y border-border">
-        <div className="container max-w-4xl mx-auto">
-          <div className="relative">
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
+      <section className="py-20 px-4 bg-card/30 border-y border-border overflow-hidden">
+        <div className="container max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-8 overflow-x-auto pb-8 scrollbar-hide no-scrollbar">
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative pl-8 md:pl-0 pb-12 last:pb-0 ${
-                  index % 2 === 0 ? "md:pr-[50%] md:text-right" : "md:pl-[50%]"
-                }`}
+                className="flex-shrink-0 w-full md:w-[300px] relative"
               >
-                <div className="absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full border-2 border-primary bg-background md:-translate-x-1/2" />
-                <div className={`${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}>
-                  <div className="font-mono text-primary text-sm mb-2">{item.year}</div>
-                  <h3 className="font-display text-lg font-bold mb-2">{item.title}</h3>
+                <div className="p-8 border border-border rounded-lg bg-background h-full hover:border-primary/50 transition-colors">
+                  <div className="font-mono text-primary text-xl mb-4">{item.year}</div>
+                  <h3 className="font-display text-lg font-bold mb-3">{item.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
