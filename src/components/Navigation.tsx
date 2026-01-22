@@ -127,7 +127,7 @@ const Navigation = () => {
           {/* Mobile: Logo and Menu Button */}
           <div className="md:hidden flex items-center justify-between w-full">
             <Link to="/" className="flex items-center">
-              <img src={oxygenLogo} alt="Oxygen Robotics" className="h-8 w-auto" />
+              <img src={oxygenLogo} alt="Oxygen Robotics" className="h-12 w-auto" />
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
