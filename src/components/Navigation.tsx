@@ -67,31 +67,33 @@ const Navigation = () => {
             </Link>
 
             {/* Navigation Menu */}
-            <NavigationMenu>
+            <NavigationMenu className="static">
               <NavigationMenuList className="gap-1">
                 {menuStructure.map((item) => (
-                  <NavigationMenuItem key={item.label}>
+                  <NavigationMenuItem key={item.label} className="static">
                     <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent font-mono text-xs tracking-wide text-muted-foreground hover:text-foreground h-auto py-1">
                       {item.label.toUpperCase()}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[200px] gap-2 p-4 bg-background border border-border rounded-lg shadow-xl">
-                        {item.subLinks.map((sub) => (
-                          <li key={sub.href}>
-                            <NavigationMenuLink asChild>
-                              <Link
-                                to={sub.href}
-                                className={cn(
-                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                  isActive(sub.href) && "bg-accent text-accent-foreground"
-                                )}
-                              >
-                                <div className="text-xs font-mono font-medium leading-none">{sub.label}</div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
+                    <NavigationMenuContent className="absolute top-full left-0 w-full mt-0 bg-background border-b border-border shadow-xl rounded-none">
+                      <div className="container max-w-7xl mx-auto py-8 px-4">
+                        <ul className="flex flex-wrap gap-x-16 gap-y-4">
+                          {item.subLinks.map((sub) => (
+                            <li key={sub.href} className="min-w-[150px]">
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to={sub.href}
+                                  className={cn(
+                                    "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:text-primary focus:text-primary",
+                                    isActive(sub.href) && "text-primary"
+                                  )}
+                                >
+                                  <div className="text-sm font-display font-bold leading-none mb-1">{sub.label}</div>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 ))}
