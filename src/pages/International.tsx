@@ -100,6 +100,36 @@ const International = () => {
         </div>
       </section>
 
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-primary/5 border-y border-primary/20">
+        <div className="container max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-3xl font-bold mb-4">
+              Ready to Start Your Chapter?
+            </h2>
+            <p className="text-muted-foreground mb-8">
+              Join the global movement and bring Oxygen Robotics to your country.
+            </p>
+            <a
+              href="https://forms.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-all"
+            >
+              Apply Now
+              <span>→</span>
+            </a>
+            <p className="text-muted-foreground/60 text-xs mt-4 font-mono">
+              Fill out the form and we will get back to you within 48 hours
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-20 px-4 bg-card/30 border-y border-border">
         <div className="container max-w-5xl mx-auto">
@@ -196,36 +226,6 @@ const International = () => {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-primary/5 border-y border-primary/20">
-        <div className="container max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-3xl font-bold mb-4">
-              Ready to Start Your Chapter?
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              Join the global movement and bring Oxygen Robotics to your country.
-            </p>
-            <a
-              href="https://forms.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-all"
-            >
-              Apply Now
-              <span>→</span>
-            </a>
-            <p className="text-muted-foreground/60 text-xs mt-4 font-mono">
-              Fill out the form and we will get back to you within 48 hours
-            </p>
-          </motion.div>
         </div>
       </section>
 

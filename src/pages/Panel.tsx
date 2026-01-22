@@ -37,20 +37,20 @@ const panels = {
     ],
     focus: ["Robotics Education", "STEM Outreach", "Competition Prep"]
   },
-  malaysia: {
-    country: "Malaysia",
-    flag: "🇲🇾",
+  kazakhstan: {
+    country: "Kazakhstan",
+    flag: "🇰🇿",
     status: "Active",
     established: "2025",
     members: "10+",
-    location: "Kuala Lumpur",
-    description: "Strategic Southeast Asian hub with partnership with KIP Hotel Kuala Lumpur, expanding our global reach.",
+    location: "Almaty",
+    description: "Our Central Asian hub, fostering technical innovation and building a bridge between East and West.",
     achievements: [
-      "Partnership with KIP Hotel Kuala Lumpur",
-      "Southeast Asian network building",
-      "Cross-border collaboration initiatives"
+      "Chapter establishment in progress",
+      "Building local academic partnerships",
+      "Engaging young Central Asian talent"
     ],
-    focus: ["International Collaboration", "Tech Partnerships", "Innovation Hub"]
+    focus: ["Technical Research", "Innovation Outreach", "International Networking"]
   }
 };
 
