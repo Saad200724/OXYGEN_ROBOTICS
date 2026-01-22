@@ -220,38 +220,84 @@ const About = () => {
       </section>
 
       {/* Founders Section */}
-      <section id="founders" className="py-20 px-4 scroll-mt-24">
-        <div className="container max-w-5xl mx-auto">
+      <section id="founders" className="py-24 px-4 scroll-mt-24">
+        <div className="container max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <span className="font-mono text-primary text-sm uppercase tracking-widest">// OUR FOUNDERS</span>
-            <h2 className="font-display text-3xl font-bold mt-4">The Minds Behind Oxygen</h2>
+            <span className="font-mono text-primary text-sm uppercase tracking-widest">// LEADERSHIP</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4">The Minds Behind Oxygen</h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+              Meet the visionaries driving innovation and fostering a global community of young engineers and builders.
+            </p>
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { id: "ilham-sajid", name: "Ilham Sajid", role: "Executive Chairman and Founder" },
-              { id: "najmus-saadat-fahim", name: "Najmus Saadat Fahim", role: "Co Founder(2024) and Executive Director" },
-              { id: "fahim-aziz", name: "Fahim Aziz", role: "Co Founder(2022)" }
+              { 
+                id: "ilham-sajid", 
+                name: "Ilham Sajid", 
+                role: "Executive Chairman and Founder",
+                initial: "I"
+              },
+              { 
+                id: "najmus-saadat-fahim", 
+                name: "Najmus Saadat Fahim", 
+                role: "Co Founder(2024) and Executive Director",
+                initial: "N"
+              },
+              { 
+                id: "fahim-aziz", 
+                name: "Fahim Aziz", 
+                role: "Co Founder(2022)",
+                initial: "F"
+              }
             ].map((founder, index) => (
               <motion.div
                 key={founder.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group p-6 border border-border rounded-lg bg-card/30 text-center hover:border-primary/50 transition-all cursor-pointer relative overflow-hidden"
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                className="group relative"
               >
-                <Link to={`/profile/${founder.id}`} className="absolute inset-0 z-10" />
-                <div className="w-20 h-20 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-display font-bold text-xl group-hover:scale-110 transition-transform">
-                  {founder.name[0]}
-                </div>
-                <h3 className="font-display font-bold text-foreground">{founder.name}</h3>
-                <p className="font-mono text-[10px] text-primary uppercase mt-1">{founder.role}</p>
-                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity font-mono text-[10px] text-muted-foreground">VIEW PROFILE →</div>
+                <Link to={`/profile/${founder.id}`} className="block">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-card/30 border border-border group-hover:border-primary/50 transition-all duration-500">
+                    {/* Artistic Background Element */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/90 z-10" />
+                    
+                    {/* Placeholder for Photo with Initial */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-32 h-32 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center text-primary font-display text-5xl font-bold group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-700">
+                        {founder.initial}
+                      </div>
+                    </div>
+
+                    {/* Content Overlay */}
+                    <div className="absolute inset-x-0 bottom-0 p-8 z-20 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="space-y-2">
+                        <div className="h-px w-8 bg-primary group-hover:w-16 transition-all duration-500" />
+                        <h3 className="font-display text-2xl font-bold text-foreground">
+                          {founder.name}
+                        </h3>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                          {founder.role}
+                        </p>
+                        <div className="pt-4 flex items-center gap-2 text-[10px] font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                          <span>VIEW CHRONICLES</span>
+                          <span className="text-primary">→</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Decorative Corner */}
+                    <div className="absolute top-4 right-4 w-8 h-8 border-t border-r border-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    <div className="absolute bottom-4 left-4 w-8 h-8 border-b border-l border-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
