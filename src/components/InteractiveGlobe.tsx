@@ -5,14 +5,26 @@ import { motion, AnimatePresence } from 'framer-motion';
 const InteractiveGlobe = () => {
   const globeEl = useRef();
   const [countries, setCountries] = useState({ features: [] });
-  const [hoverD, setHoverD] = useState();
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [hoverD, setHoverD] = useState<any>();
+  const [selectedCountry, setSelectedCountry] = useState<any>(null);
 
   useEffect(() => {
     // Load GeoJSON data
     fetch('/data/world.json')
       .then(res => res.json())
       .then(setCountries);
+    
+    // Initial point of view to show Bangladesh, Pakistan, and Kazakhstan
+    const timer = setTimeout(() => {
+      if (globeEl.current) {
+        (globeEl.current as any).pointOfView({
+          lat: 25,
+          lng: 80,
+          altitude: 2.5
+        }, 1000);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   // Target countries to highlight
@@ -21,14 +33,14 @@ const InteractiveGlobe = () => {
   // Custom cyan color for Oxygen Robotics
   const oxygenCyan = '#00E5FF';
 
-  const getPolygonColor = (d) => {
+  const getPolygonColor = (d: any) => {
     if (targetCountries.includes(d.properties.NAME)) {
-      return oxygenCyan;
+      return d === hoverD ? '#66F0FF' : oxygenCyan;
     }
     return 'rgba(255, 255, 255, 0.05)';
   };
 
-  const getPolygonLabel = (d) => `
+  const getPolygonLabel = (d: any) => `
     <div style="background: rgba(0, 0, 0, 0.8); color: #fff; padding: 8px; border-radius: 4px; border: 1px solid ${oxygenCyan}; font-family: 'JetBrains Mono', monospace; font-size: 12px;">
       <b>${d.properties.NAME}</b>
       ${targetCountries.includes(d.properties.NAME) ? `<br/><span style="color: ${oxygenCyan}">Oxygen Chapter Active</span>` : ''}
@@ -65,7 +77,9 @@ const InteractiveGlobe = () => {
         polygonStrokeColor={(d: any) => targetCountries.includes(d.properties.NAME) ? oxygenCyan : 'rgba(255, 255, 255, 0.1)'}
         polygonCapColor={getPolygonColor}
         polygonLabel={getPolygonLabel}
-        onPolygonHover={setHoverD}
+        onPolygonHover={(d: any) => {
+          setHoverD(d);
+        }}
         onPolygonClick={handlePolygonClick}
         polygonsTransitionDuration={300}
       />
