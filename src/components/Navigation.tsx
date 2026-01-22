@@ -26,7 +26,7 @@ const Navigation = () => {
         { label: "Mission", href: "/about#mission" },
         { label: "Vision", href: "/about#vision" },
         { label: "Our Founders", href: "/about#founders" },
-        { label: "Strategic Partners", href: "/about#partners" },
+        { label: "Partners & Affiliates", href: "/partners-n-affiliate" },
       ],
     },
     {

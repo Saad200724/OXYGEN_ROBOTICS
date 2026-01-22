@@ -9,6 +9,7 @@ import About from "./pages/About";
 import International from "./pages/International";
 import Gallery from "./pages/Gallery";
 import Panel from "./pages/Panel";
+import PartnersAffiliates from "./pages/PartnersAffiliates";
 import Projects from "./pages/Projects";
 import Archives from "./pages/Archives";
 import TechStack from "./pages/TechStack";
@@ -31,6 +32,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
+          <Route path="/partners-n-affiliate" element={<PartnersAffiliates />} />
           <Route path="/international" element={<International />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/panel" element={<Panel />} />
