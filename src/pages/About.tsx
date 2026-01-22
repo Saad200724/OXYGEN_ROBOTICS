@@ -53,7 +53,7 @@ const About = () => {
             viewport={{ once: true }}
             className="font-mono text-primary text-sm uppercase tracking-widest"
           >
-            // OUR STORY
+            // How the story Initiated
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
