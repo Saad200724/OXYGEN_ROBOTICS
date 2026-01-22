@@ -138,7 +138,12 @@ const PartnersAffiliates = () => {
                     viewport={{ once: true }}
                     className="p-8 border border-border rounded-2xl bg-card/30 flex justify-between items-center group hover:bg-card/50 transition-colors"
                   >
-                    <div className="flex items-center gap-6">
+                    <a 
+                      href={mou.entity === "Sinology" ? "https://www.facebook.com/sinologyofficial" : "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-6 flex-1"
+                    >
                       {mou.logo && (
                         <div className="w-16 h-16 rounded-xl overflow-hidden border border-border bg-white p-2">
                           <img src={mou.logo} alt={mou.entity} className="w-full h-full object-contain" />
@@ -148,7 +153,7 @@ const PartnersAffiliates = () => {
                         <h3 className="font-display text-xl font-bold mb-1">{mou.entity}</h3>
                         <p className="text-primary font-mono text-[10px] uppercase tracking-widest">{mou.scope}</p>
                       </div>
-                    </div>
+                    </a>
                     <div className="text-right">
                       <div className="font-mono text-xs text-muted-foreground">{mou.date}</div>
                       <div className="mt-2 h-1 w-8 bg-primary/30 group-hover:w-12 transition-all" />

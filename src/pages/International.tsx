@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, Users, Globe, Award, TrendingUp, BookOpen, Handshake, Briefcase } from "lucide-react";
+import { Check, Users, Globe, Award, TrendingUp, BookOpen, Handshake, Briefcase, Target, Rocket } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -39,6 +39,16 @@ const International = () => {
       icon: Briefcase,
       title: "Equity Participation",
       description: "Share in benefits as Oxygen Robotics holds equity in emerging startups",
+    },
+    {
+      icon: Target,
+      title: "Strategic Autonomy",
+      description: "Operate with regional independence while backed by global R&D strength",
+    },
+    {
+      icon: Rocket,
+      title: "Launchpad Access",
+      description: "Priority access to Oxygen's proprietary tech and research pipelines",
     },
   ];
 
