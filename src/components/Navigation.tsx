@@ -83,8 +83,8 @@ const Navigation = () => {
                                 <Link
                                   to={sub.href}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:text-primary focus:text-primary hover:bg-transparent focus:bg-transparent",
-                                    isActive(sub.href) && "text-primary"
+                                    "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:text-white focus:text-white hover:bg-transparent focus:bg-transparent",
+                                    isActive(sub.href) ? "text-white" : "text-muted-foreground"
                                   )}
                                 >
                                   <div className="text-sm font-display font-bold leading-none mb-1">{sub.label}</div>
