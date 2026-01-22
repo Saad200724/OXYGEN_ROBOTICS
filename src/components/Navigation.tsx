@@ -83,7 +83,7 @@ const Navigation = () => {
                                 <Link
                                   to={sub.href}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:text-primary focus:text-primary",
+                                    "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:text-primary focus:text-primary hover:bg-transparent focus:bg-transparent",
                                     isActive(sub.href) && "text-primary"
                                   )}
                                 >
