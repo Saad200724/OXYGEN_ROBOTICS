@@ -14,13 +14,13 @@ const HeroSection = () => {
       <div className="container relative z-10 max-w-6xl mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8 text-center lg:text-left">
             {/* Status Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mx-auto lg:mx-0"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="font-mono text-xs text-primary">
@@ -67,7 +67,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap justify-center lg:justify-start gap-4"
             >
               <Link
                 to="/international"
@@ -91,7 +91,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex gap-8 pt-4"
+              className="flex justify-center lg:justify-start gap-8 pt-4"
             >
               <div>
                 <div className="font-display text-2xl font-bold text-primary">3+</div>
@@ -113,7 +113,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
+            className="relative hidden md:block"
           >
             <InteractiveGlobe />
             

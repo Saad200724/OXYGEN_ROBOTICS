@@ -30,7 +30,7 @@ const PartnersSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-wrap justify-center items-center gap-12 md:gap-20"
+          className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-20"
         >
           {partners.map((partner, index) => (
             <motion.div
@@ -39,14 +39,14 @@ const PartnersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group"
+              className="group flex-shrink-0"
             >
               <div className="flex flex-col items-center gap-3 opacity-80 hover:opacity-100 transition-opacity duration-300">
-                <div className="h-16 flex items-center justify-center">
+                <div className="h-12 sm:h-16 flex items-center justify-center">
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="h-full w-auto max-w-[140px] object-contain"
+                    className="h-full w-auto max-w-[100px] sm:max-w-[140px] object-contain"
                   />
                 </div>
               </div>
