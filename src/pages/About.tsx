@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useScrollToHash } from "@/hooks/use-scroll-to-hash";
@@ -194,10 +195,10 @@ const About = () => {
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: "Ilham Sajid", role: "CEO & Co-Founder" },
-              { name: "Fahim Aziz", role: "Co-Founder" },
-              { name: "Najmus Saadat Fahim", role: "COO" },
-              { name: "Md. Ahtesamul Rasul", role: "CTO" }
+              { id: "ilham-sajid", name: "Ilham Sajid", role: "CEO & Co-Founder" },
+              { id: "fahim-aziz", name: "Fahim Aziz", role: "Co-Founder" },
+              { id: "najmus-saadat-fahim", name: "Najmus Saadat Fahim", role: "COO" },
+              { id: "md-ahtesamul-rasul", name: "Md. Ahtesamul Rasul", role: "CTO" }
             ].map((founder, index) => (
               <motion.div
                 key={founder.name}
@@ -205,13 +206,15 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 border border-border rounded-lg bg-card/30 text-center"
+                className="group p-6 border border-border rounded-lg bg-card/30 text-center hover:border-primary/50 transition-all cursor-pointer relative overflow-hidden"
               >
-                <div className="w-20 h-20 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-display font-bold text-xl">
+                <Link to={`/profile/${founder.id}`} className="absolute inset-0 z-10" />
+                <div className="w-20 h-20 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-display font-bold text-xl group-hover:scale-110 transition-transform">
                   {founder.name[0]}
                 </div>
                 <h3 className="font-display font-bold text-foreground">{founder.name}</h3>
                 <p className="font-mono text-[10px] text-primary uppercase mt-1">{founder.role}</p>
+                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity font-mono text-[10px] text-muted-foreground">VIEW PROFILE →</div>
               </motion.div>
             ))}
           </div>

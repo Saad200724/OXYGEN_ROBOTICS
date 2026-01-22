@@ -15,6 +15,7 @@ import Events from "./pages/Events";
 import Stories from "./pages/Stories";
 import Join from "./pages/Join";
 import Partner from "./pages/Partner";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/stories" element={<Stories />} />
           <Route path="/join" element={<Join />} />
           <Route path="/partner" element={<Partner />} />
+          <Route path="/profile/:id" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
