@@ -83,6 +83,15 @@ const About = () => {
       {/* Timeline Section */}
       <section className="py-20 px-4 bg-card/30 border-y border-border">
         <div className="container max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="font-mono text-primary text-sm uppercase tracking-widest">// TIMELINE</span>
+            <h2 className="font-display text-3xl font-bold mt-4">Growth & Evolution</h2>
+          </motion.div>
           <div className="relative">
             <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
             {timeline.map((item, index) => (
