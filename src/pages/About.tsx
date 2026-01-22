@@ -109,31 +109,62 @@ const About = () => {
       </section>
 
       {/* Mission Section */}
-      <section id="mission" className="py-20 px-4 scroll-mt-24">
-        <div className="container max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="font-mono text-primary text-sm uppercase tracking-widest">// MISSION</span>
-            <h2 className="font-display text-3xl font-bold mt-4">Our Objective</h2>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {missions.map((mission, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-5 border border-border rounded-lg bg-card/30 hover:border-primary/50 transition-colors"
-              >
-                <div className="font-mono text-primary text-xs mb-3">0{index + 1}</div>
-                <p className="text-sm text-foreground">{mission}</p>
-              </motion.div>
-            ))}
+      <section id="mission" className="py-24 px-4 scroll-mt-24 bg-card/10">
+        <div className="container max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div>
+                <span className="font-mono text-primary text-sm uppercase tracking-widest">// OUR MISSION</span>
+                <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 leading-tight">
+                  Driving the Future of <br />
+                  <span className="text-primary">Human-Robot Synergy</span>
+                </h2>
+              </div>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                We are committed to pushing the boundaries of technology while fostering 
+                a global community of innovators. Our mission is built on four core 
+                pillars that define our impact and direction.
+              </p>
+              <div className="flex gap-4 pt-4">
+                <div className="flex flex-col">
+                  <span className="text-3xl font-bold text-primary">04</span>
+                  <span className="text-xs font-mono uppercase text-muted-foreground">Strategic Pillars</span>
+                </div>
+                <div className="w-px h-12 bg-border mx-2" />
+                <div className="flex flex-col">
+                  <span className="text-3xl font-bold text-primary">Global</span>
+                  <span className="text-xs font-mono uppercase text-muted-foreground">Impact Scope</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="space-y-4">
+              {missions.map((mission, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group relative p-6 bg-background border border-border hover:border-primary/50 transition-all duration-300 overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <span className="font-display text-6xl font-bold italic">0{index + 1}</span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 h-2 w-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
+                    <p className="text-base font-medium text-foreground leading-relaxed pr-8">
+                      {mission}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
