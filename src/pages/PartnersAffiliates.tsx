@@ -2,10 +2,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import orwaLogo from "@/assets/orwa-logo.png";
+import bbaLogo from "@/assets/bba-logo.png";
+import kipLogo from "@/assets/kip-logo.png";
 
-const PartnersData: Record<string, { strategic: string[], affiliates: { entity: string, date: string, scope: string }[] }> = {
+const PartnersData: Record<string, { strategic: { name: string, logo: string }[], affiliates: { entity: string, date: string, scope: string }[] }> = {
   "2026": {
-    strategic: ["PARTNER_ALPHA", "PARTNER_BETA", "PARTNER_GAMMA", "PARTNER_DELTA"],
+    strategic: [
+      { name: "Biman Bangladesh Airlines", logo: bbaLogo },
+      { name: "Old Remians Welfare Association", logo: orwaLogo },
+      { name: "KIP Hotel", logo: kipLogo },
+    ],
     affiliates: [
       { entity: "University of Innovation", date: "Est. 2026", scope: "Joint Research & Internship" },
       { entity: "Global Tech Council", date: "Est. 2026", scope: "Standardization & Ethics" },
@@ -14,7 +21,11 @@ const PartnersData: Record<string, { strategic: string[], affiliates: { entity: 
     ]
   },
   "2025": {
-    strategic: ["LEGACY_CORP", "TECH_PIONEERS"],
+    strategic: [
+      { name: "Biman Bangladesh Airlines", logo: bbaLogo },
+      { name: "Old Remians Welfare Association", logo: orwaLogo },
+      { name: "KIP Hotel", logo: kipLogo },
+    ],
     affiliates: [
       { entity: "National Science Academy", date: "Est. 2025", scope: "Curriculum Development" },
       { entity: "Regional Innovation Fund", date: "Est. 2025", scope: "Startup Support" }
@@ -90,16 +101,20 @@ const PartnersAffiliates = () => {
               </div>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {data.strategic.map((name, i) => (
+                {data.strategic.map((partner, i) => (
                   <motion.div
-                    key={name}
+                    key={partner.name}
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="aspect-video border border-border rounded-xl bg-background flex items-center justify-center grayscale hover:grayscale-0 hover:border-primary/50 transition-all group"
+                    className="aspect-video border border-border rounded-xl bg-background flex items-center justify-center grayscale hover:grayscale-0 hover:border-primary/50 transition-all group p-4"
                   >
-                    <span className="font-display font-bold text-xl opacity-20 group-hover:opacity-100 transition-opacity">{name}</span>
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name} 
+                      className="h-full w-auto max-h-[60px] object-contain opacity-40 group-hover:opacity-100 transition-opacity"
+                    />
                   </motion.div>
                 ))}
               </div>
