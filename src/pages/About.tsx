@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { useScrollToHash } from "@/hooks/use-scroll-to-hash";
 
 const About = () => {
+  useScrollToHash();
   const timeline = [
     {
       year: "2022",

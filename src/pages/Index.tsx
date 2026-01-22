@@ -5,8 +5,10 @@ import PartnersSection from "@/components/PartnersSection";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Rocket, Users, Globe, Award } from "lucide-react";
+import { useScrollToHash } from "@/hooks/use-scroll-to-hash";
 
 const Index = () => {
+  useScrollToHash();
   const highlights = [
     {
       icon: Rocket,
