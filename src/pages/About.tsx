@@ -195,8 +195,8 @@ const About = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { name: "Ilham Sajid", role: "CEO & Co-Founder" },
-              { name: "Fahim Aziz", role: "COO & Co-Founder" },
-              { name: "Najmus Saadat Fahim", role: "Key Member" },
+              { name: "Fahim Aziz", role: "Co-Founder" },
+              { name: "Najmus Saadat Fahim", role: "COO" },
               { name: "Md. Ahtesamul Rasul", role: "CTO" }
             ].map((founder, index) => (
               <motion.div
