@@ -67,14 +67,14 @@ const Navigation = () => {
             </Link>
 
             {/* Navigation Menu */}
-            <NavigationMenu className="static">
+            <NavigationMenu>
               <NavigationMenuList className="gap-1">
                 {menuStructure.map((item) => (
-                  <NavigationMenuItem key={item.label} className="relative">
+                  <NavigationMenuItem key={item.label}>
                     <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent font-mono text-xs tracking-wide text-muted-foreground hover:text-foreground h-auto py-1">
                       {item.label.toUpperCase()}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute top-full left-0 mt-2 z-[60]">
+                    <NavigationMenuContent>
                       <ul className="grid w-[200px] gap-2 p-4 bg-background border border-border rounded-lg shadow-xl">
                         {item.subLinks.map((sub) => (
                           <li key={sub.href}>
