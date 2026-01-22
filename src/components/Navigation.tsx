@@ -50,6 +50,7 @@ const Navigation = () => {
       subLinks: [
         { label: "Join Us", href: "/join" },
         { label: "Partner with Us", href: "/partner" },
+        { label: "Gallery", href: "/gallery" },
       ],
     },
   ];
