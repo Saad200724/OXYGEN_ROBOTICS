@@ -14,16 +14,16 @@ const HeroSection = () => {
       <div className="container relative z-10 max-w-6xl mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+          <div className="space-y-6 md:space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start w-full overflow-hidden">
             {/* Status Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mx-auto lg:mx-0"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mx-auto lg:mx-0 max-w-full"
             >
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="font-mono text-xs text-primary leading-none">FOUNDED 2022 · DHAKA, BANGLADESH</span>
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
+              <span className="font-mono text-[10px] xs:text-xs text-primary leading-none truncate">FOUNDED 2022 · DHAKA, BANGLADESH</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -31,12 +31,12 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight w-full break-words"
             >
               <span className="text-foreground">Building a </span>
               <span className="text-primary glitch-text">Global Youth</span>
-              <br />
-              <span className="text-foreground">Robotics Movement</span>
+              <br className="hidden sm:block" />
+              <span className="text-foreground"> Robotics Movement</span>
             </motion.h1>
 
             {/* Tagline */}
@@ -44,7 +44,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-muted-foreground max-w-xl font-mono"
+              className="text-base md:text-lg text-muted-foreground max-w-xl font-mono mx-auto lg:mx-0"
             >
               Fueled by Curiosity. Built on Struggle. Engineered for Sovereignty.
             </motion.p>
@@ -54,10 +54,10 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-muted-foreground max-w-xl"
+              className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
               We unite the brightest young minds across borders to design, solve, 
-              and lead through robotics and AI. This is just the beginning.
+              and lead through robotics and AI.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -65,20 +65,20 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-4"
+              className="flex flex-col xs:flex-row flex-wrap justify-center lg:justify-start gap-4 w-full px-4 sm:px-0"
             >
               <Link
                 to="/international"
-                className="group px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-all"
+                className="group px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded hover:bg-primary/90 transition-all text-center flex-1 sm:flex-none"
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                   Start a Chapter
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </span>
               </Link>
               <Link
                 to="/about"
-                className="px-6 py-3 border border-border text-foreground font-mono text-sm rounded hover:bg-secondary/50 transition-all"
+                className="px-6 py-3 border border-border text-foreground font-mono text-sm rounded hover:bg-secondary/50 transition-all text-center flex-1 sm:flex-none"
               >
                 Our Story
               </Link>
@@ -89,19 +89,19 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex justify-center lg:justify-start gap-8 pt-4"
+              className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8 pt-4"
             >
-              <div>
-                <div className="font-display text-2xl font-bold text-primary">3+</div>
-                <div className="font-mono text-xs text-muted-foreground">Years Building</div>
+              <div className="flex flex-col items-center lg:items-start">
+                <div className="font-display text-xl sm:text-2xl font-bold text-primary">3+</div>
+                <div className="font-mono text-[10px] text-muted-foreground uppercase">Years Building</div>
               </div>
-              <div>
-                <div className="font-display text-2xl font-bold text-primary">3</div>
-                <div className="font-mono text-xs text-muted-foreground">Active Regions</div>
+              <div className="flex flex-col items-center lg:items-start">
+                <div className="font-display text-xl sm:text-2xl font-bold text-primary">3</div>
+                <div className="font-mono text-[10px] text-muted-foreground uppercase">Active Regions</div>
               </div>
-              <div>
-                <div className="font-display text-2xl font-bold text-primary">∞</div>
-                <div className="font-mono text-xs text-muted-foreground">Possibilities</div>
+              <div className="flex flex-col items-center lg:items-start">
+                <div className="font-display text-xl sm:text-2xl font-bold text-primary">∞</div>
+                <div className="font-mono text-[10px] text-muted-foreground uppercase">Possibilities</div>
               </div>
             </motion.div>
           </div>
@@ -111,7 +111,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
+            className="relative w-full aspect-square max-w-[300px] sm:max-w-none mx-auto"
           >
             <InteractiveGlobe />
             
