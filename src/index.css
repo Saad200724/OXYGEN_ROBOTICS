@@ -6,64 +6,65 @@
 
 @layer base {
   :root {
-    /* Oxygen Robotics Design System - Industrial Futurism */
-    --background: 0 0% 2%; /* #050505 Void Black */
-    --foreground: 0 0% 98%; /* Pure White */
+    /* Oxygen Robotics Design System - Industrial Futurism (Ember palette) */
+    --background: 240 4% 5%; /* #0B0B0C Main Canvas */
+    --foreground: 0 0% 100%; /* #FFFFFF Primary Text */
 
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 3% 12%; /* #1E1E20 Component Grey */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 3% 12%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 186 100% 50%; /* #00F0FF Oxygen Cyan */
-    --primary-foreground: 0 0% 2%;
+    --primary: 26 100% 50%; /* #FF6D00 Primary Hero Accent */
+    --primary-foreground: 240 4% 5%;
 
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 240 3% 12%; /* #1E1E20 Component Grey */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 240 3% 12%; /* #1E1E20 Component Grey */
+    --muted-foreground: 0 0% 92%; /* #EAEAEA Warm Silver/Muted */
 
-    --accent: 186 100% 50%;
-    --accent-foreground: 0 0% 2%;
+    --accent: 34 100% 50%; /* #FF9100 Vibrant Neon Orange */
+    --accent-foreground: 240 4% 5%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 66% 47%; /* #C62828 Dark Coral Support */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 12%;
-    --ring: 186 100% 50%;
+    --border: 240 3% 18%;
+    --input: 240 3% 12%;
+    --ring: 26 100% 50%;
 
     --radius: 0.5rem;
 
     /* Custom Oxygen Colors */
-    --oxygen-cyan: 186 100% 50%;
-    --oxygen-cyan-glow: 186 100% 60%;
-    --void-black: 0 0% 2%;
-    --grid-line: 0 0% 10%;
+    --oxygen-cyan: 26 100% 50%; /* #FF6D00 Primary Hero Accent */
+    --oxygen-cyan-glow: 34 100% 50%; /* #FF9100 Vibrant Neon Orange */
+    --oxygen-amber: 14 82% 46%; /* #D84315 Deep Burnt Amber */
+    --void-black: 240 4% 5%; /* #0B0B0C Main Canvas */
+    --grid-line: 240 3% 10%;
   }
 
   .dark {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 186 100% 50%;
-    --primary-foreground: 0 0% 2%;
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 186 100% 50%;
-    --accent-foreground: 0 0% 2%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 12%;
-    --ring: 186 100% 50%;
+    --background: 240 4% 5%;
+    --foreground: 0 0% 100%;
+    --card: 240 3% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 3% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 26 100% 50%;
+    --primary-foreground: 240 4% 5%;
+    --secondary: 240 3% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 3% 12%;
+    --muted-foreground: 0 0% 92%;
+    --accent: 34 100% 50%;
+    --accent-foreground: 240 4% 5%;
+    --destructive: 0 66% 47%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 3% 18%;
+    --input: 240 3% 12%;
+    --ring: 26 100% 50%;
   }
 }
 

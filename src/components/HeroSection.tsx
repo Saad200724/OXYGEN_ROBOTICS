@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import InteractiveGlobe from "./InteractiveGlobe";
+import { Globe } from "lucide-react";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 md:pt-16">
       {/* Background Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,109,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,109,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
@@ -113,8 +113,19 @@ const HeroSection = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="relative w-full aspect-square max-w-[300px] sm:max-w-none mx-auto"
           >
-            <InteractiveGlobe />
-            
+            {/* Static Emblem (replaces 3D globe) */}
+            <div className="relative w-full h-full flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full border border-primary/20 blueprint-grid opacity-40" />
+              <motion.div
+                animate={{ scale: [1, 1.04, 1] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-3/5 aspect-square rounded-full bg-gradient-to-br from-primary/20 via-primary/5 to-transparent border border-primary/30 flex items-center justify-center oxygen-glow"
+              >
+                <Globe className="w-1/3 h-1/3 text-primary" strokeWidth={1.2} />
+              </motion.div>
+              <div className="absolute inset-6 rounded-full border border-dashed border-primary/10 animate-rotate-slow" />
+            </div>
+
             {/* Globe Status */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}

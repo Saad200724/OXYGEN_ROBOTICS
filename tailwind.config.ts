@@ -50,6 +50,7 @@ export default {
         oxygen: {
           cyan: "hsl(var(--oxygen-cyan))",
           "cyan-glow": "hsl(var(--oxygen-cyan-glow))",
+          amber: "hsl(var(--oxygen-amber))",
         },
         void: {
           black: "hsl(var(--void-black))",

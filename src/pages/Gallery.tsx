@@ -84,24 +84,37 @@ const Gallery = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative aspect-square border border-border rounded-lg bg-card/30 overflow-hidden hover:border-primary/50 transition-colors"
+                className="group relative rounded-3xl border border-border bg-card/40 p-3 hover:border-primary/50 transition-colors"
               >
-                {/* Placeholder */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground/50">
-                  <ImageIcon className="w-12 h-12 mb-2" />
-                  <span className="font-mono text-xs">Photo Placeholder</span>
+                {/* Nested rounded panel */}
+                <div className="relative aspect-square rounded-2xl bg-secondary/60 overflow-hidden">
+                  {/* Placeholder */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground/50">
+                    <ImageIcon className="w-12 h-12 mb-2" />
+                    <span className="font-mono text-xs">Photo Placeholder</span>
+                  </div>
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <div className="font-mono text-xs text-primary mb-1">
+                        {item.category}
+                      </div>
+                      <h3 className="font-display text-lg font-bold">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <div className="font-mono text-xs text-primary mb-1">
-                      {item.category}
-                    </div>
-                    <h3 className="font-display text-lg font-bold">
-                      {item.title}
-                    </h3>
-                  </div>
+                {/* Caption strip (visible outside hover, sits in the outer rounded shell) */}
+                <div className="flex items-center justify-between px-2 pt-3 pb-1">
+                  <span className="font-mono text-[10px] text-primary uppercase tracking-wide">
+                    {item.category}
+                  </span>
+                  <span className="font-mono text-xs text-muted-foreground truncate max-w-[60%] text-right">
+                    {item.title}
+                  </span>
                 </div>
               </motion.div>
             ))}
