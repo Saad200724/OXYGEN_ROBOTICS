@@ -1,0 +1,56 @@
+7:11:55 PM: build-image version: 969defd95f3977f8de9cb1f48802a7e6f3d8c0b3 (noble-new-builds)
+7:11:55 PM: buildbot version: 969defd95f3977f8de9cb1f48802a7e6f3d8c0b3
+7:11:55 PM: Building without cache
+7:11:55 PM: Starting to prepare the repo for build
+7:11:55 PM: No cached dependencies found. Cloning fresh repo
+7:11:55 PM: git clone --filter=blob:none https://github.com/Saad200724/OXYGEN_ROBOTICS
+7:11:56 PM: Preparing Git Reference refs/heads/main
+7:11:57 PM: 
+​
+Warning: some redirects have syntax errors:
+​
+Could not parse redirect line 1:
+  /*
+Missing destination path/URL
+​
+Could not parse redirect line 2:
+  This file is for Netlify redirects.
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect line 3:
+  It ensures that all requests are redirected to index.html,
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect line 4:
+  allowing React Router to handle the routing on the client side.
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect line 5:
+  */
+Missing destination path/URL
+
+7:11:57 PM: Installing dependencies
+7:11:57 PM: mise ~/.config/mise/config.toml tools: python@3.14.3
+7:11:57 PM: mise ~/.config/mise/config.toml tools: ruby@3.4.8
+7:11:58 PM: mise ~/.config/mise/config.toml tools: go@1.26.2
+7:11:58 PM: v22.23.1 is already installed.
+7:11:58 PM: Now using node v22.23.1 (npm v10.9.8)
+7:11:58 PM: Enabling Node.js Corepack
+7:11:59 PM: No npm workspaces detected
+7:11:59 PM: Installing npm packages using npm version 10.9.8
+7:13:10 PM: Failed during stage 'Install dependencies': dependency_installation script returned non-zero exit code: 1
+7:13:10 PM: npm error code ENOTFOUND
+7:13:10 PM: npm error syscall getaddrinfo
+7:13:10 PM: npm error errno ENOTFOUND
+7:13:10 PM: npm error network request to http://package-firewall.replit.local/npm/esbuild/-/esbuild-0.21.5.tgz failed, reason: getaddrinfo ENOTFOUND package-firewall.replit.local
+7:13:10 PM: npm error network This is a problem related to network connectivity.
+7:13:10 PM: npm error network In most cases you are behind a proxy or have bad network settings.
+7:13:10 PM: npm error network
+7:13:10 PM: npm error network If you are behind a proxy, please make sure that the
+7:13:10 PM: npm error network 'proxy' config is set properly.  See: 'npm help config'
+7:13:10 PM: npm error A complete log of this run can be found in: /opt/buildhome/.npm/_logs/2026-07-08T13_11_59_138Z-debug-0.log
+7:13:10 PM: Error during npm install
+7:13:10 PM: Failing build: Failed to install dependencies
+Building
+Complete
+7:13:11 PM: Finished processing build request in 1m15.547s
