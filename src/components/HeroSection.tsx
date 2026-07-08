@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import HeroGlobe from "./HeroGlobe";
+import IgnitionCore from "./IgnitionCore";
 
 const HeroSection = () => {
   const status = {
@@ -118,14 +118,14 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right Column - 3D Globe */}
+          {/* Right Column - Atomic Core */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="lg:col-span-6 lg:pt-4 w-full max-w-[420px] lg:max-w-[560px] mx-auto"
+            className="lg:col-span-6 lg:pt-8 w-full max-w-[480px] lg:max-w-none mx-auto"
           >
-            <HeroGlobe />
+            <IgnitionCore />
           </motion.div>
         </div>
       </div>
