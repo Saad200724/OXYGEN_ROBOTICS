@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Zap, MapPin, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import IgnitionCore from "./IgnitionCore";
 
 const HeroSection = () => {
-  const stats = [
-    { value: "3+", label: "Years" },
-    { value: "3", label: "Regions" },
-    { value: "50+", label: "Builders" },
-  ];
+  const status = {
+    years: "3+",
+    regions: "3",
+    builders: "50+",
+    locations: ["Bangladesh", "Pakistan", "Kazakhstan"],
+  };
 
   return (
     <section className="relative min-h-screen flex items-start overflow-hidden pt-32 pb-20">
@@ -75,18 +76,45 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-wrap gap-8 sm:gap-12 border-t border-border pt-6"
+              className="border border-border p-5 sm:p-6 max-w-2xl"
             >
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <div className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-                    {stat.value}
+              <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest mb-5">
+                Organization Status
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-5 gap-x-8">
+                <div>
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase mb-1">
+                    Years building
                   </div>
-                  <div className="font-mono text-[10px] text-muted-foreground uppercase mt-1">
-                    {stat.label}
+                  <div className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+                    {status.years}
                   </div>
                 </div>
-              ))}
+                <div>
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase mb-1">
+                    Active regions
+                  </div>
+                  <div className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+                    {status.regions}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase mb-1">
+                    Youth builders
+                  </div>
+                  <div className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+                    {status.builders}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5 pt-5 border-t border-border">
+                <div className="font-mono text-[10px] text-muted-foreground uppercase mb-2">
+                  Active locations
+                </div>
+                <div className="font-mono text-sm text-foreground">
+                  {status.locations.join(" · ")}
+                </div>
+              </div>
             </motion.div>
           </div>
 
