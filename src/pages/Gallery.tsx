@@ -122,29 +122,6 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Upload CTA */}
-      <section className="py-20 px-4">
-        <div className="container max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-8 border border-dashed border-border rounded-lg bg-card/20"
-          >
-            <ImageIcon className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
-            <h3 className="font-display text-xl font-bold mb-2">
-              Have Photos to Share?
-            </h3>
-            <p className="text-muted-foreground text-sm mb-4">
-              Contact us to feature your chapter photos in our gallery.
-            </p>
-            <span className="font-mono text-xs text-primary">
-              Coming Soon: Photo Upload Feature
-            </span>
-          </motion.div>
-        </div>
-      </section>
-
       <Footer />
     </main>
   );
