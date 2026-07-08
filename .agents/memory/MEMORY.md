@@ -1,0 +1,1 @@
+- [Express 5 wildcard routes](express5-wildcard-routes.md) — `app.get("*", ...)` throws at startup on Express 5; use named wildcard syntax instead.

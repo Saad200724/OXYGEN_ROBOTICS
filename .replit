@@ -7,7 +7,7 @@ channel = "stable-25_05"
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["node", "./dist/index.cjs"]
+run = ["node", "./dist/index.js"]
 build = ["npm", "run", "build"]
 publicDir = "dist"
 

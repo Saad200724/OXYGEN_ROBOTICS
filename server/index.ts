@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
   app.use(express.static(publicPath));
   
   // Handle SPA routing - serve index.html for all non-API routes
-  app.get("*", (req, res, next) => {
+  app.get("/*splat", (req, res, next) => {
     if (req.path.startsWith("/api")) {
       return next();
     }

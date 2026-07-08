@@ -33,9 +33,10 @@ Preferred communication style: Simple, everyday language.
 - **Database Ready**: Schema prepared for PostgreSQL via Neon serverless driver, currently using in-memory storage
 
 ### Build and Development
-- **Development Server**: Vite dev server with hot module replacement
-- **Production Build**: Vite builds static frontend assets
-- **Deployment**: Configured for Vercel with serverless API functions via `vercel.json`
+- **Development Server**: `npm run dev` runs the Vite dev server only (frontend, HMR, port 5000). The Express API (`/api/contact`) is not active in this mode — that matches the original Vercel serverless split, where `server/index.ts` is deployed separately.
+- **Production Build**: `npm run build` builds the static frontend with Vite, type-checks with `tsc`, and bundles `server/index.ts` into `dist/index.js` (ESM) with esbuild.
+- **Production Run (Replit deployment)**: `node ./dist/index.js` starts the bundled Express server, which serves the built frontend from `dist/` and handles `/api/*` routes.
+- **Deployment**: Replit's `.replit` autoscale deployment runs the built Express server above. The repo is also configured for Vercel with serverless API functions via `vercel.json`.
 
 ## External Dependencies
 

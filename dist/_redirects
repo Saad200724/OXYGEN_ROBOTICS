@@ -1,0 +1,6 @@
+/*
+  This file is for Netlify redirects.
+  It ensures that all requests are redirected to index.html,
+  allowing React Router to handle the routing on the client side.
+*/
+/*  /index.html  200
