@@ -17,9 +17,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,109,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,109,0,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
 
       <div className="container relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-start">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
           {/* Left Column */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -123,7 +123,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="lg:col-span-5 lg:pt-12 max-w-[360px] lg:max-w-none mx-auto"
+            className="lg:col-span-6 lg:pt-8 w-full max-w-[480px] lg:max-w-none mx-auto"
           >
             <IgnitionCore />
           </motion.div>

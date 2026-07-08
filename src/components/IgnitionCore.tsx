@@ -26,7 +26,7 @@ const IgnitionCore = () => {
   ];
 
   return (
-    <div className="relative w-full aspect-square max-w-[520px] mx-auto">
+    <div className="relative w-full aspect-square max-w-[640px] mx-auto">
       <svg
         viewBox="0 0 500 500"
         className="w-full h-full"
