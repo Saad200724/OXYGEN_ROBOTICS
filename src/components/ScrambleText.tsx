@@ -1,89 +1,94 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Only narrow Latin + common Romance/accented chars — no wide Greek to avoid layout shift
-const SCRAMBLE_CHARS = "abcdefghijklmnopqrstuvwxyzáàâãéèêëíìóòôõúùûñçýæø";
+const CHARS = "abcdefghijklmnopqrstuvwxyzáàâãéèêëíìóòôõúùûñçýæø";
 
-interface ScrambleTextProps {
+function runScramble(
+  text: string,
+  duration: number,
+  fps: number,
+  onFrame: (val: string) => void,
+  onDone: () => void
+): () => void {
+  const totalFrames = Math.round((duration / 1000) * fps);
+  const interval = 1000 / fps;
+  let frame = 0;
+  let id: ReturnType<typeof setTimeout>;
+
+  // build list of non-space char indices once
+  const nonSpaceIdxs: number[] = [];
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] !== " ") nonSpaceIdxs.push(i);
+  }
+  const total = nonSpaceIdxs.length;
+
+  const tick = () => {
+    frame++;
+    const resolved = new Set(
+      nonSpaceIdxs.slice(0, Math.floor((frame / totalFrames) * total))
+    );
+
+    const chars = text.split("").map((c, i) => {
+      if (c === " ") return "\u00a0";
+      if (resolved.has(i)) return c;
+      return CHARS[Math.floor(Math.random() * CHARS.length)];
+    });
+
+    onFrame(chars.join(""));
+
+    if (frame < totalFrames) {
+      id = setTimeout(tick, interval);
+    } else {
+      onFrame(text);
+      onDone();
+    }
+  };
+
+  id = setTimeout(tick, interval);
+  return () => clearTimeout(id);
+}
+
+interface Props {
   text: string;
   className?: string;
   duration?: number;
   fps?: number;
 }
 
-const ScrambleText = ({
-  text,
-  className = "",
-  duration = 1100,
-  fps = 28,
-}: ScrambleTextProps) => {
-  const [displayed, setDisplayed] = useState(text);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const isRunning = useRef(false);
+export default function ScrambleText({ text, className = "", duration = 1100, fps = 28 }: Props) {
+  const [display, setDisplay] = useState(text);
+  const running = useRef(false);
+  const cancel = useRef<(() => void) | null>(null);
 
-  // Pre-compute non-space positions so resolve threshold is space-aware
-  const nonSpacePositions = text
-    .split("")
-    .map((c, i) => (c !== " " ? i : -1))
-    .filter((i) => i !== -1);
-  const nonSpaceCount = nonSpacePositions.length;
+  function trigger() {
+    if (running.current) return;
+    running.current = true;
+    cancel.current = runScramble(
+      text,
+      duration,
+      fps,
+      setDisplay,
+      () => { running.current = false; }
+    );
+  }
 
-  const scramble = useCallback(() => {
-    if (isRunning.current) return;
-    isRunning.current = true;
-
-    const totalFrames = Math.round((duration / 1000) * fps);
-    const interval = 1000 / fps;
-    let frame = 0;
-
-    const tick = () => {
-      frame++;
-      const progress = frame / totalFrames; // 0 → 1
-
-      // How many non-space chars have resolved so far
-      const resolvedCount = Math.floor(progress * nonSpaceCount);
-      const resolvedIndices = new Set(nonSpacePositions.slice(0, resolvedCount));
-
-      const result = text
-        .split("")
-        .map((char, i) => {
-          if (char === " ") return "\u00a0"; // non-breaking space keeps width
-          if (resolvedIndices.has(i)) return char;
-          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-        })
-        .join("");
-
-      setDisplayed(result);
-
-      if (frame < totalFrames) {
-        timerRef.current = setTimeout(tick, interval);
-      } else {
-        setDisplayed(text);
-        isRunning.current = false;
-      }
-    };
-
-    tick();
-  }, [text, duration, fps, nonSpaceCount, nonSpacePositions]);
-
-  // Auto-play once on mount
+  // auto-play on mount once
   useEffect(() => {
-    const t = setTimeout(() => scramble(), 350);
+    const t = setTimeout(trigger, 400);
     return () => {
       clearTimeout(t);
-      if (timerRef.current) clearTimeout(timerRef.current);
+      cancel.current?.();
     };
-  }, [scramble]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <span
-      className={`cursor-pointer select-none whitespace-nowrap inline-block ${className}`}
-      onMouseEnter={scramble}
-      onClick={scramble}
+      className={`whitespace-nowrap inline-block cursor-pointer select-none ${className}`}
       aria-label={text}
+      onMouseEnter={trigger}
+      onClick={trigger}
     >
-      {displayed}
+      {display}
     </span>
   );
-};
-
-export default ScrambleText;
+}
