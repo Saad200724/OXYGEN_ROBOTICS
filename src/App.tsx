@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -15,7 +15,6 @@ import Archives from "./pages/Archives";
 import TechStack from "./pages/TechStack";
 import Events from "./pages/Events";
 import Stories from "./pages/Stories";
-import Join from "./pages/Join";
 import Partner from "./pages/Partner";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
@@ -33,7 +32,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/partners-n-affiliate" element={<PartnersAffiliates />} />
-          <Route path="/international" element={<International />} />
+          <Route path="/international" element={<Navigate to="/join" replace />} />
+          <Route path="/join" element={<International />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/panel" element={<Panel />} />
           <Route path="/projects" element={<Projects />} />
@@ -41,7 +41,6 @@ const App = () => (
           <Route path="/tech-stack" element={<TechStack />} />
           <Route path="/events" element={<Events />} />
           <Route path="/stories" element={<Stories />} />
-          <Route path="/join" element={<Join />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/profile/:id" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

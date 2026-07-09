@@ -8,7 +8,7 @@ const columns = [
     links: [
       { label: "Home", to: "/" },
       { label: "About", to: "/about" },
-      { label: "International", to: "/international" },
+      { label: "Join Us", to: "/join" },
       { label: "Gallery", to: "/gallery" },
       { label: "Panel", to: "/panel" },
     ],

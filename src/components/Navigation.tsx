@@ -41,7 +41,7 @@ const Navigation = () => {
     {
       label: "Our Impact",
       subLinks: [
-        { label: "Global Chapters", href: "/international" },
+        { label: "Global Chapters", href: "/join" },
         { label: "Events", href: "/events" },
         { label: "Success Stories", href: "/stories" },
       ],
@@ -118,7 +118,7 @@ const Navigation = () => {
 
             {/* CTA Button */}
             <Link
-              to="/international"
+              to="/join"
               className="flex items-center gap-2 font-mono text-xs px-4 py-2 border border-foreground text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors"
             >
               <ArrowRight className="w-3 h-3" />
@@ -180,7 +180,7 @@ const Navigation = () => {
                   PANEL
                 </Link>
                 <Link
-                  to="/international"
+                  to="/join"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 font-mono text-sm px-4 py-2 border border-foreground text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors"
                 >

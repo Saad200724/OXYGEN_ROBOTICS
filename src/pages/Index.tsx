@@ -171,7 +171,7 @@ const Index = () => {
               Bring Oxygen to your school, city, or country. We provide the framework, the mentorship, and the network.
             </p>
             <Link
-              to="/international"
+              to="/join"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-background text-foreground font-mono text-sm font-semibold hover:bg-background/90 transition-colors"
             >
               Apply Now
