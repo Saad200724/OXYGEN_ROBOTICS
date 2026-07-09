@@ -16,6 +16,7 @@ interface Member {
   category: Exclude<Category, "all">;
   bio: string;
   skills: Record<string, number>;
+  photo?: string;
 }
 
 interface Chapter {
@@ -54,6 +55,7 @@ const chapters = {
         role: "Executive Chairman",
         dept: "R&D Innovation",
         category: "leadership" as const,
+        photo: "/members/ilham-sajid.png",
         bio: "Strategizes innovative research architectures, guides cross-department collaboration, and leads development milestones of Oxygen Robotics.",
         skills: { "R&D Strategy": 95, "Systems Design": 90, Physics: 88, Hardware: 85 },
       },
@@ -63,6 +65,7 @@ const chapters = {
         role: "Deputy National Director",
         dept: "Technology Co-ordination",
         category: "leadership" as const,
+        photo: "/members/ahtesamul-rasul.png",
         bio: "Orchestrates technical architecture alignment and provides robust management paradigms for advanced systems development.",
         skills: { Management: 94, Robotics: 91, "System Integration": 89, Hardware: 84 },
       },
@@ -72,6 +75,7 @@ const chapters = {
         role: "Acting Dep. Director",
         dept: "Human Resources",
         category: "leadership" as const,
+        photo: "/members/safee-naiar.png",
         bio: "Drives internal operations, optimizes talent acquisition pipelines, and oversees cross-team alignment protocols.",
         skills: { "Ops Mgmt": 92, Leadership: 90, Communication: 95, Planning: 88 },
       },
@@ -81,6 +85,7 @@ const chapters = {
         role: "Executive",
         dept: "Software Development",
         category: "departments" as const,
+        photo: "/members/saad-bin-tofayel.png",
         bio: "Builds high-performance algorithms, structures real-time communication libraries, and leads the autonomous navigation stack development.",
         skills: { "Python / C++": 96, Algorithms: 93, "Computer Vision": 87, ROS: 85 },
       },
@@ -90,6 +95,7 @@ const chapters = {
         role: "Senior Executive",
         dept: "Research",
         category: "departments" as const,
+        photo: "/members/areeb-bin-faruque.png",
         bio: "Oversees research endeavors, mathematical models development, and algorithmic evaluations for high-end embedded systems.",
         skills: { "Deep Learning": 94, Mathematics: 92, Simulation: 89, "Scientific Writing": 90 },
       },
@@ -99,6 +105,7 @@ const chapters = {
         role: "Senior Executive",
         dept: "Public Relations",
         category: "departments" as const,
+        photo: "/members/zubayer-hasan-shaad.png",
         bio: "Directs media strategies, represents the team across global forums, and acts as the communications bridge for Oxygen Robotics.",
         skills: { "Public Speaking": 95, "Media Strategy": 90, Negotiation: 88, Branding: 92 },
       },
@@ -108,6 +115,7 @@ const chapters = {
         role: "Senior Executive",
         dept: "Events & Logistics",
         category: "departments" as const,
+        photo: "/members/ahmed-jidan.png",
         bio: "Directs physical deployments, manages critical supply chains, and coordinates operational logistics for national robotic arenas.",
         skills: { Planning: 93, "Crisis Mgmt": 91, "Supply Chain": 88, Deployment: 90 },
       },
@@ -117,6 +125,7 @@ const chapters = {
         role: "Senior Executive",
         dept: "Special Initiative",
         category: "initiatives" as const,
+        photo: "/members/mahdi-bin-ferdaus.png",
         bio: "Drives exploratory programs, manages specialized team development sprints, and coordinates cross-border research initiatives.",
         skills: { Strategy: 92, "HW Prototyping": 89, Telemetry: 85, Adaptability: 94 },
       },
@@ -126,6 +135,7 @@ const chapters = {
         role: "Executive",
         dept: "Special Initiative",
         category: "initiatives" as const,
+        photo: "/members/mahtasim-masrafi.png",
         bio: "Collaborates on high-impact strategic project workflows and structures cross-functional testing modules for smart systems.",
         skills: { "Embedded Systems": 90, Debugging: 88, "Rapid Prototyping": 91, Research: 86 },
       },
@@ -404,8 +414,16 @@ function MemberCard({
       className="group w-full text-left bg-card/30 border border-border hover:border-primary/40 transition-all duration-200 p-5 flex flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
     >
       {/* Avatar */}
-      <div className="w-20 h-20 border border-border group-hover:border-primary/30 transition-colors mb-4 mx-auto">
-        <MemberAvatar />
+      <div className="w-20 h-20 border border-border group-hover:border-primary/30 transition-colors mb-4 mx-auto overflow-hidden">
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={member.name}
+            className="w-full h-full object-cover object-top"
+          />
+        ) : (
+          <MemberAvatar />
+        )}
       </div>
 
       {/* Name */}
