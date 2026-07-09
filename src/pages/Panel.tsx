@@ -426,7 +426,7 @@ const Panel = () => {
   const [activeChapter, setActiveChapter] = useState<ChapterKey>("bangladesh");
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [search, setSearch] = useState("");
-  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const [selectedMember, setSelectedMember] = useState<Member | null>(chapters.bangladesh.members[0]);
 
   const chapter = chapters[activeChapter];
 
