@@ -248,7 +248,7 @@ const CATEGORIES: { key: Category; label: string }[] = [
 
 function MemberDetailPanel({ member }: { member: Member | null }) {
   return (
-    <div className="lg:sticky lg:top-32 h-fit">
+    <div className="h-full">
       <AnimatePresence mode="wait">
         {member ? (
           <motion.div
@@ -373,7 +373,7 @@ function MemberCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.04, duration: 0.3 }}
       onClick={() => onSelect(member)}
-      className={`group w-full text-left bg-card/30 border transition-all duration-200 p-5 flex flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-primary ${
+      className={`group w-full h-full text-left bg-card/30 border transition-all duration-200 p-5 flex flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-primary ${
         isSelected
           ? "border-primary bg-primary/5"
           : "border-border hover:border-primary/40"
@@ -623,9 +623,9 @@ const Panel = () => {
               </div>
 
               {/* Right: member grid */}
-              <div className="lg:col-span-7 order-1 lg:order-2">
+              <div className="lg:col-span-7 order-1 lg:order-2 h-full">
                 {filteredMembers.length > 0 ? (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 h-full auto-rows-fr">
                     {filteredMembers.map((member, i) => (
                       <MemberCard
                         key={member.id}
