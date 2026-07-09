@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Search, MapPin, Calendar, Users, Trophy, ChevronRight, BarChart3 } from "lucide-react";
+import { Search, MapPin, Calendar, Users, Trophy, ChevronRight } from "lucide-react";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -244,136 +244,95 @@ const CATEGORIES: { key: Category; label: string }[] = [
   { key: "initiatives", label: "Special Initiatives"},
 ];
 
-// ─── Member Profile Modal ─────────────────────────────────────────────────────
+// ─── Member Detail Panel (left side) ──────────────────────────────────────────
 
-const FOCUSABLE = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
-
-function MemberModal({ member, onClose }: { member: Member | null; onClose: () => void }) {
-  const dialogRef  = useRef<HTMLDivElement>(null);
-  const closeRef   = useRef<HTMLButtonElement>(null);
-  const triggerRef = useRef<HTMLElement | null>(null);
-  const stableClose = useCallback(onClose, [onClose]);
-
-  useEffect(() => {
-    if (!member) return;
-    triggerRef.current = document.activeElement as HTMLElement;
-    document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { stableClose(); return; }
-      if (e.key === "Tab" && dialogRef.current) {
-        const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE));
-        if (!focusable.length) return;
-        const first = focusable[0], last = focusable[focusable.length - 1];
-        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-        else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => {
-      window.removeEventListener("keydown", handler);
-      document.body.style.overflow = "";
-      triggerRef.current?.focus();
-    };
-  }, [member, stableClose]);
-
-  const titleId = member ? `modal-title-${member.id}` : undefined;
-
+function MemberDetailPanel({ member }: { member: Member | null }) {
   return (
-    <AnimatePresence>
-      {member && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-sm"
-          onClick={(e) => { if (e.target === e.currentTarget) stableClose(); }}
-        >
+    <div className="lg:sticky lg:top-32 h-fit">
+      <AnimatePresence mode="wait">
+        {member ? (
           <motion.div
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.22 }}
-            className="bg-card border border-border max-w-2xl w-full relative overflow-hidden"
+            key={member.id}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.25 }}
+            className="bg-card/30 border border-border p-5 sm:p-6"
           >
-            {/* Top border accent */}
-            <div className="h-px w-full bg-primary" />
-
-            <div className="p-8">
-              {/* Close */}
-              <button
-                ref={closeRef}
-                onClick={stableClose}
-                aria-label="Close member profile"
-                className="absolute top-6 right-6 p-1.5 border border-border hover:border-primary/50 text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              {/* Header */}
-              <div className="mb-8 pb-8 border-b border-border pr-12">
-                <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest mb-3">
-                  Oxygen Robotics · Member Profile
+            {/* Large image */}
+            <div className="aspect-[3/4] w-full border border-border mb-6 overflow-hidden bg-card">
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top"
+                />
+              ) : (
+                <div className="w-full h-full text-muted-foreground/30">
+                  <MemberAvatar />
                 </div>
-                <h3 id={titleId} className="font-display text-3xl sm:text-4xl font-bold text-foreground leading-tight mb-2">
-                  {member.name}
-                </h3>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 items-center">
-                  <span className="font-mono text-xs text-primary border border-primary/30 px-2 py-0.5">
-                    {member.role}
-                  </span>
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {member.dept}
-                  </span>
-                </div>
+              )}
+            </div>
+
+            {/* Meta */}
+            <div className="font-mono text-[10px] text-primary uppercase tracking-widest mb-2">
+              {member.role}
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground leading-tight mb-2">
+              {member.name}
+            </h3>
+            <p className="font-mono text-xs text-muted-foreground mb-5">
+              {member.dept}
+            </p>
+
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+              {member.bio}
+            </p>
+
+            {/* Skills */}
+            <div>
+              <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest mb-4">
+                Capability Index
               </div>
-
-              {/* Bio + skills */}
-              <div className="grid sm:grid-cols-2 gap-8">
-                <div>
-                  <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest mb-3">
-                    Profile
+              <div className="space-y-3">
+                {Object.entries(member.skills).map(([label, value]) => (
+                  <div key={label}>
+                    <div className="flex justify-between font-mono text-[10px] text-muted-foreground uppercase mb-1.5">
+                      <span>{label}</span>
+                      <span className="text-primary">{value}</span>
+                    </div>
+                    <div className="h-px w-full bg-border relative">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${value}%` }}
+                        transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                        className="absolute top-0 left-0 h-px bg-primary"
+                      />
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {member.bio}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest mb-4">
-                    Capability Index
-                  </div>
-                  <div className="space-y-3">
-                    {Object.entries(member.skills).map(([label, value]) => (
-                      <div key={label}>
-                        <div className="flex justify-between font-mono text-[10px] text-muted-foreground uppercase mb-1.5">
-                          <span>{label}</span>
-                          <span className="text-primary">{value}</span>
-                        </div>
-                        <div className="h-px w-full bg-border relative">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${value}%` }}
-                            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-                            className="absolute top-0 left-0 h-px bg-primary"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        ) : (
+          <motion.div
+            key="empty"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="bg-card/30 border border-border border-dashed p-6 text-center"
+          >
+            <div className="w-32 h-32 mx-auto text-muted-foreground/20">
+              <MemberAvatar />
+            </div>
+            <p className="font-mono text-xs text-muted-foreground mt-4">
+              Select a member to view their profile
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -397,21 +356,28 @@ function MemberAvatar() {
 function MemberCard({
   member,
   index,
-  onInspect,
+  isSelected,
+  onSelect,
 }: {
   member: Member;
   index: number;
-  onInspect: (m: Member) => void;
+  isSelected: boolean;
+  onSelect: (m: Member) => void;
 }) {
   return (
     <motion.button
       type="button"
+      aria-pressed={isSelected}
       aria-label={`View profile for ${member.name}, ${member.role}`}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.04, duration: 0.3 }}
-      onClick={() => onInspect(member)}
-      className="group w-full text-left bg-card/30 border border-border hover:border-primary/40 transition-all duration-200 p-5 flex flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+      onClick={() => onSelect(member)}
+      className={`group w-full text-left bg-card/30 border transition-all duration-200 p-5 flex flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-primary ${
+        isSelected
+          ? "border-primary bg-primary/5"
+          : "border-border hover:border-primary/40"
+      }`}
     >
       {/* Avatar */}
       <div className="w-20 h-20 border border-border group-hover:border-primary/30 transition-colors mb-4 mx-auto overflow-hidden">
@@ -460,7 +426,7 @@ const Panel = () => {
   const [activeChapter, setActiveChapter] = useState<ChapterKey>("bangladesh");
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [search, setSearch] = useState("");
-  const [inspectedMember, setInspectedMember] = useState<Member | null>(null);
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
 
   const chapter = chapters[activeChapter];
 
@@ -479,6 +445,7 @@ const Panel = () => {
     setActiveChapter(key);
     setActiveCategory("all");
     setSearch("");
+    setSelectedMember(null);
   };
 
   const statusLabel: Record<Chapter["status"], string> = {
@@ -648,34 +615,43 @@ const Panel = () => {
               </div>
             </div>
 
-            {/* ── Member grid ── */}
-            <div className="pt-8">
-              {filteredMembers.length > 0 ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                  {filteredMembers.map((member, i) => (
-                    <MemberCard
-                      key={member.id}
-                      member={member}
-                      index={i}
-                      onInspect={setInspectedMember}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="py-16 font-mono text-sm text-muted-foreground"
-                >
-                  No members match that search.
-                </motion.div>
-              )}
+            {/* ── Member split view ── */}
+            <div className="pt-8 grid lg:grid-cols-12 gap-8">
+              {/* Left: selected member detail + image */}
+              <div className="lg:col-span-5 order-2 lg:order-1">
+                <MemberDetailPanel member={selectedMember} />
+              </div>
 
-              {filteredMembers.length > 0 && (
-                <div className="pt-6 font-mono text-[10px] text-muted-foreground/50 uppercase tracking-widest">
-                  {filteredMembers.length} member{filteredMembers.length !== 1 ? "s" : ""} shown
-                </div>
-              )}
+              {/* Right: member grid */}
+              <div className="lg:col-span-7 order-1 lg:order-2">
+                {filteredMembers.length > 0 ? (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {filteredMembers.map((member, i) => (
+                      <MemberCard
+                        key={member.id}
+                        member={member}
+                        index={i}
+                        isSelected={selectedMember?.id === member.id}
+                        onSelect={setSelectedMember}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="py-16 font-mono text-sm text-muted-foreground"
+                  >
+                    No members match that search.
+                  </motion.div>
+                )}
+
+                {filteredMembers.length > 0 && (
+                  <div className="pt-6 font-mono text-[10px] text-muted-foreground/50 uppercase tracking-widest">
+                    {filteredMembers.length} member{filteredMembers.length !== 1 ? "s" : ""} shown
+                  </div>
+                )}
+              </div>
             </div>
 
           </motion.div>
@@ -684,9 +660,6 @@ const Panel = () => {
       </div>
 
       <Footer />
-
-      {/* Modal */}
-      <MemberModal member={inspectedMember} onClose={() => setInspectedMember(null)} />
     </main>
   );
 };
