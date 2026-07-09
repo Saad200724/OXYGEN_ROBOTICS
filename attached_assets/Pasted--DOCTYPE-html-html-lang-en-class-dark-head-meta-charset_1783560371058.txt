@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxygen Robotics Executive Committee 2026</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts for High-Tech Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              magenta: '#d946ef', // fuchsia-500
+              purple: '#8b5cf6', // violet-500
+              darkpurple: '#1e112a',
+              grid: '#2e1c3f',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 12s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium Grid Background matching the original poster style */
+    .bg-cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(217, 70, 239, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(217, 70, 239, 0.04) 1px, transparent 1px);
+    }
+    .bg-radial-glow {
+      background: radial-gradient(circle 600px at 50% 200px, rgba(139, 92, 246, 0.15), transparent 80%);
+    }
+    .text-glow {
+      text-shadow: 0 0 15px rgba(217, 70, 239, 0.6);
+    }
+    .border-glow:hover {
+      box-shadow: 0 0 25px rgba(217, 70, 239, 0.25);
+    }
+    /* Hide scrollbar for clean card descriptions */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 min-h-screen selection:bg-fuchsia-500 selection:text-white overflow-x-hidden bg-cyber-grid bg-radial-glow font-sans">
+
+  <!-- Header / Navigation HUD -->
+  <header class="border-b border-neutral-900 bg-neutral-950/80 backdrop-blur-md sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo Mark matching the original poster -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-fuchsia-500 to-purple-600 flex items-center justify-center shadow-[0_0_15px_rgba(217,70,239,0.4)]">
+          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] tracking-[0.25em] text-fuchsia-500 font-bold block uppercase leading-none">Oxygen</span>
+          <span class="font-black text-lg tracking-tight uppercase leading-none">Robotics</span>
+        </div>
+      </div>
+
+      <!-- Action Center -->
+      <div class="flex items-center gap-4">
+        <span class="hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/50 font-mono text-[10px] text-neutral-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> SYSTEM: ONLINE
+        </span>
+        <button onclick="toggleThemeAccent()" class="p-2.5 rounded-xl border border-neutral-800 hover:border-fuchsia-500/50 text-neutral-400 hover:text-fuchsia-400 bg-neutral-900/40 transition-all duration-300" title="Switch Theme Matrix">
+          <i class="fa-solid d-icon fa-wand-magic-sparkles"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Portal Banner -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
+    
+    <!-- Cyber Decorative Accents -->
+    <div class="absolute top-10 left-10 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+    <div class="absolute top-40 right-20 w-40 h-40 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="text-center relative z-10 max-w-3xl mx-auto mb-16">
+      <!-- Decorative Tag -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-fuchsia-500/20 bg-fuchsia-950/20 text-fuchsia-400 text-xs font-mono tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(217,70,239,0.05)]">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-fuchsia-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500"></span>
+        </span>
+        Active Committee Roster
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
+        Executive <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 text-glow">Committee</span>
+      </h1>
+      <p class="text-6xl sm:text-8xl font-black uppercase tracking-widest text-neutral-900 font-mono mt-1 leading-none -translate-y-1 select-none">
+        2026
+      </p>
+
+      <p class="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto mt-4 leading-relaxed">
+        The core operational, research, and technical minds leading Oxygen Robotics toward global innovation and deep-tech excellence.
+      </p>
+    </div>
+
+    <!-- Live Controls: Search & Division Filters -->
+    <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-900 rounded-3xl p-6 mb-12 shadow-2xl relative z-20">
+      <div class="flex flex-col lg:flex-row gap-4 items-center justify-between">
+        
+        <!-- Interactive Category Filters -->
+        <div class="flex flex-wrap gap-2 w-full lg:w-auto justify-start" id="filterContainer">
+          <button onclick="filterCategory('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 bg-fuchsia-500 text-white border border-fuchsia-500">All</button>
+          <button onclick="filterCategory('leadership')" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 bg-neutral-900 text-neutral-400 border border-neutral-800 hover:border-neutral-700 hover:text-white">Leadership</button>
+          <button onclick="filterCategory('departments')" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 bg-neutral-900 text-neutral-400 border border-neutral-800 hover:border-neutral-700 hover:text-white">Departments</button>
+          <button onclick="filterCategory('initiatives')" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 bg-neutral-900 text-neutral-400 border border-neutral-800 hover:border-neutral-700 hover:text-white">Special Initiatives</button>
+        </div>
+
+        <!-- Sleek Glass Search Bar -->
+        <div class="relative w-full lg:w-80">
+          <input 
+            type="text" 
+            id="searchBar" 
+            oninput="searchMembers()" 
+            placeholder="Search executive members..." 
+            class="w-full bg-neutral-950/60 text-neutral-100 placeholder-neutral-500 border border-neutral-800 rounded-xl py-3 pl-11 pr-4 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500/50 transition-all duration-300 font-mono"
+          />
+          <div class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500">
+            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Core Interactive Members Grid -->
+    <div id="membersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative z-20">
+      <!-- Script will render members inside here -->
+    </div>
+
+    <!-- Empty State for Search -->
+    <div id="emptyState" class="hidden text-center py-24">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-neutral-900 flex items-center justify-center text-neutral-700 border border-neutral-800">
+        <i class="fa-solid fa-microchip text-2xl"></i>
+      </div>
+      <h3 class="text-lg font-bold text-neutral-300">No Committee Members Found</h3>
+      <p class="text-neutral-500 text-sm mt-1">Try adjusting your keyword or division search filters.</p>
+    </div>
+
+  </main>
+
+  <!-- Interactive Panel Detail Modal (HUD Inspection Profile) -->
+  <div id="inspectorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-neutral-950 border border-fuchsia-500/40 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl scale-95 transition-transform duration-300" id="modalCard">
+      
+      <!-- Close Button -->
+      <button onclick="closeInspector()" class="absolute top-6 right-6 p-2 rounded-xl bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 hover:border-fuchsia-500/50 text-neutral-400 hover:text-fuchsia-400 transition-all duration-300">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <!-- Hologram Glow -->
+      <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-fuchsia-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+      
+      <!-- Modal Content Dynamic Injector -->
+      <div id="modalContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Interactive Footer -->
+  <footer class="border-t border-neutral-900 bg-neutral-950 py-12 mt-20 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div>
+        <p class="text-neutral-400 text-sm">&copy; 2026 Oxygen Robotics. All rights reserved.</p>
+        <p class="text-neutral-600 text-xs mt-1">Designed with a premium Dark Matrix HUD architecture to honor the Executive Committee roster.</p>
+      </div>
+      <div class="flex gap-4">
+        <a href="#" class="p-3 rounded-xl bg-neutral-900/50 border border-neutral-800 text-neutral-400 hover:text-fuchsia-400 hover:border-fuchsia-500/30 transition-all duration-300">
+          <i class="fa-brands fa-facebook text-lg"></i>
+        </a>
+        <a href="#" class="p-3 rounded-xl bg-neutral-900/50 border border-neutral-800 text-neutral-400 hover:text-fuchsia-400 hover:border-fuchsia-500/30 transition-all duration-300">
+          <i class="fa-brands fa-linkedin text-lg"></i>
+        </a>
+        <a href="#" class="p-3 rounded-xl bg-neutral-900/50 border border-neutral-800 text-neutral-400 hover:text-fuchsia-400 hover:border-fuchsia-500/30 transition-all duration-300">
+          <i class="fa-brands fa-github text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Executive Committee Dataset built strictly around the uploaded poster credentials
+    const committeeData = [
+      {
+        id: "ilham-sajid",
+        name: "Ilham Sajid",
+        role: "Executive Chairman",
+        dept: "Co-ordinator of R&D Innovation",
+        category: "leadership",
+        posterColor: "green", // This reflects his unique green poster theme!
+        bio: "Strategizes innovative research architectures, guides cross-department collaboration, and leads development milestones of Oxygen Robotics.",
+        skills: { rD: 95, systems: 90, physics: 88, hardware: 85 },
+        colorTheme: "from-emerald-500 to-teal-500",
+        accentColor: "emerald"
+      },
+      {
+        id: "ahtesamul-rasul",
+        name: "Mohammad Ahtesamul Rasul",
+        role: "Deputy National Director",
+        dept: "Technology Co-ordination",
+        category: "leadership",
+        posterColor: "purple",
+        bio: "Orchestrates technical architecture alignment and provides robust management paradigms for advanced systems development.",
+        skills: { management: 94, robotics: 91, systemIntegration: 89, hardware: 84 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      },
+      {
+        id: "safee-naiar",
+        name: "Safee Naiar",
+        role: "Acting Deputy National Director",
+        dept: "Head of the HR Dept.",
+        category: "leadership",
+        posterColor: "purple",
+        bio: "Drives internal operations, optimizes talent acquisition pipelines, and oversees cross-team alignment protocols.",
+        skills: { operationalMgmt: 92, leadership: 90, communication: 95, planning: 88 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      },
+      {
+        id: "saad-bin-tofayel",
+        name: "Saad Bin Tofayel",
+        role: "Executive",
+        dept: "Head of the Dept. Software Development",
+        category: "departments",
+        posterColor: "purple",
+        bio: "Builds high-performance algorithms, structures real-time communication libraries, and leads the autonomous navigation stack development.",
+        skills: { pythonC: 96, algorithms: 93, computerVision: 87, ros: 85 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      },
+      {
+        id: "areeb-bin-faruque",
+        name: "Areeb Bin Faruque",
+        role: "Senior Executive",
+        dept: "Head of the Dept. Research",
+        category: "departments",
+        posterColor: "purple",
+        bio: "Oversees research endeavors, mathematical models development, and algorithmic evaluations for high-end embedded systems.",
+        skills: { deepLearning: 94, mathematics: 92, simulation: 89, scientificWriting: 90 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      },
+      {
+        id: "zubayer-hasan-shaad",
+        name: "Zubayer Hasan Shaad",
+        role: "Senior Executive",
+        dept: "Head of the Dept. Public Relations",
+        category: "departments",
+        posterColor: "purple",
+        bio: "Directs media strategies, represents the team across global forums, and acts as the communications bridge for Oxygen Robotics.",
+        skills: { publicSpeaking: 95, mediaStrategy: 90, negotiation: 88, branding: 92 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      },
+      {
+        id: "ahmed-jidan",
+        name: "Ahmed Jidan",
+        role: "Senior Executive",
+        dept: "Head of the Dept. Event & Logistics",
+        category: "departments",
+        posterColor: "purple",
+        bio: "Directs physical deployments, manages critical supply chains, and coordinates operational logistics for national robotic arenas.",
+        skills: { planning: 93, crisisMgmt: 91, supplyChain: 88, deployment: 90 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      },
+      {
+        id: "mahdi-bin-ferdaus",
+        name: "Mahdi Bin Ferdaus",
+        role: "Senior Executive",
+        dept: "Special Initiative",
+        category: "initiatives",
+        posterColor: "purple",
+        bio: "Drives exploratory programs, manages specialized team development sprints, and coordinates cross-border research initiatives.",
+        skills: { strategy: 92, hardwarePrototyping: 89, telemetry: 85, adaptability: 94 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      },
+      {
+        id: "mahtasim-masrafi",
+        name: "Mahtasim Masrafi Chowdhury",
+        role: "Executive",
+        dept: "Special Initiative",
+        category: "initiatives",
+        posterColor: "purple",
+        bio: "Collaborates on high-impact strategic project workflows and structures cross-functional testing modules for smart systems.",
+        skills: { embeddedSystems: 90, debugging: 88, rapidPrototyping: 91, research: 86 },
+        colorTheme: "from-fuchsia-500 to-purple-600",
+        accentColor: "fuchsia"
+      }
+    ];
+
+    let activeFilter = 'all';
+    let isToggledAccent = false;
+
+    // Toggle theme matrix (allows turning the grid/highlights into emerald green / original poster color)
+    function toggleThemeAccent() {
+      isToggledAccent = !isToggledAccent;
+      const htmlEl = document.documentElement;
+      
+      const themeBtn = document.querySelector('.d-icon');
+      if (isToggledAccent) {
+        themeBtn.className = "fa-solid d-icon fa-wand-magic-sparkles text-emerald-400";
+        // Change grid border colorings
+        document.body.style.backgroundImage = `
+          linear-gradient(to right, rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(16, 185, 129, 0.04) 1px, transparent 1px)
+        `;
+      } else {
+        themeBtn.className = "fa-solid d-icon fa-wand-magic-sparkles text-neutral-400";
+        document.body.style.backgroundImage = `
+          linear-gradient(to right, rgba(217, 70, 239, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(217, 70, 239, 0.04) 1px, transparent 1px)
+        `;
+      }
+      renderCards();
+    }
+
+    // Function to render cards dynamically
+    function renderCards(data = committeeData) {
+      const grid = document.getElementById('membersGrid');
+      grid.innerHTML = '';
+
+      if (data.length === 0) {
+        document.getElementById('emptyState').classList.remove('hidden');
+        return;
+      } else {
+        document.getElementById('emptyState').classList.add('hidden');
+      }
+
+      data.forEach(member => {
+        // Theme parameters dependent on toggle theme state
+        const useOriginalPosterColors = isToggledAccent; 
+        const isGreenPoster = member.posterColor === 'green';
+        
+        const primaryBorderHover = (useOriginalPosterColors && isGreenPoster) 
+          ? 'hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]' 
+          : 'hover:border-fuchsia-500/50 hover:shadow-[0_0_30px_rgba(217,70,239,0.15)]';
+
+        const glowBackground = (useOriginalPosterColors && isGreenPoster)
+          ? 'bg-emerald-500/10'
+          : 'bg-fuchsia-500/10';
+
+        const avatarFrameGradient = (useOriginalPosterColors && isGreenPoster)
+          ? 'group-hover:from-emerald-500 group-hover:to-teal-500'
+          : 'group-hover:from-fuchsia-500 group-hover:to-purple-600';
+
+        const textHighlight = (useOriginalPosterColors && isGreenPoster)
+          ? 'group-hover:text-emerald-400'
+          : 'group-hover:text-fuchsia-400';
+
+        const tagTextClass = (useOriginalPosterColors && isGreenPoster)
+          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900/50'
+          : 'text-fuchsia-400 bg-fuchsia-950/40 border-fuchsia-900/50';
+
+        const inlineSvgColor = (useOriginalPosterColors && isGreenPoster) ? '#10b981' : '#d946ef';
+
+        // Custom Procedural SVG Avatars mapping the high tech concept
+        const avatarSvg = `
+          <svg class="w-full h-full p-2 text-neutral-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="45" r="22" stroke="${inlineSvgColor}" stroke-width="2" stroke-dasharray="2 2" />
+            <path d="M50 20V12M50 78v-8M20 50h8M72 50h8" stroke="${inlineSvgColor}" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Cybernetic Helmet HUD Graphic -->
+            <rect x="38" y="32" width="24" height="26" rx="12" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M42 45H58" stroke="${inlineSvgColor}" stroke-width="2" />
+            <!-- Neck & Base -->
+            <path d="M44 58v10h12V58" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="M30 78c0-8 10-10 20-10s20 2 20 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+        `;
+
+        const card = document.createElement('div');
+        card.className = `relative group w-full bg-neutral-900/30 backdrop-blur-md border border-neutral-800/80 rounded-3xl p-6 transition-all duration-300 ${primaryBorderHover}`;
+        card.innerHTML = `
+          <!-- Internal Glowing Pattern -->
+          <div class="absolute top-12 left-1/2 -translate-x-1/2 w-24 h-24 ${glowBackground} rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <!-- Poster Circle Profile Frame -->
+          <div class="relative w-28 h-28 mx-auto mb-5 rounded-full p-[3px] bg-gradient-to-b from-neutral-700 to-transparent ${avatarFrameGradient} transition-all duration-300 shadow-inner">
+            <div class="w-full h-full bg-neutral-950 rounded-full flex items-center justify-center overflow-hidden">
+              ${avatarSvg}
+            </div>
+            <!-- Technical Angle Frame Bracket -->
+            <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-fuchsia-500 rounded-tl-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-fuchsia-500 rounded-br-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+
+          <!-- Metadata -->
+          <div class="text-center">
+            <h3 class="text-lg font-black text-neutral-100 tracking-wide uppercase transition-colors duration-200 line-clamp-1 ${textHighlight}">
+              ${member.name}
+            </h3>
+            
+            <div class="inline-block text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-1 rounded-md border mt-2 ${tagTextClass}">
+              ${member.role}
+            </div>
+
+            <div class="w-6 h-[2px] bg-neutral-800 mx-auto my-4 group-hover:w-16 group-hover:bg-fuchsia-500 transition-all duration-300"></div>
+            
+            <p class="text-xs text-neutral-400 font-medium font-mono min-h-[32px] line-clamp-2 px-1">
+              ${member.dept}
+            </p>
+
+            <!-- Inspect Core Capabilities Button -->
+            <button onclick="openInspector('${member.id}')" class="mt-5 w-full py-2.5 rounded-xl bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 hover:border-fuchsia-500/50 text-neutral-400 hover:text-white text-xs font-mono font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-chart-bar text-[10px] text-fuchsia-500"></i> Inspect Capabilities
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Interactive category filter system
+    function filterCategory(category) {
+      activeFilter = category;
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.className = "filter-btn px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 bg-neutral-900 text-neutral-400 border border-neutral-800 hover:border-neutral-700 hover:text-white");
+      
+      const activeBtn = event.currentTarget;
+      activeBtn.className = "filter-btn active px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 bg-fuchsia-500 text-white border border-fuchsia-500";
+
+      applyFilters();
+    }
+
+    // Interactive search system
+    function searchMembers() {
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const searchVal = document.getElementById('searchBar').value.toLowerCase();
+      
+      const filtered = committeeData.filter(member => {
+        const matchesCategory = (activeFilter === 'all' || member.category === activeFilter);
+        const matchesSearch = member.name.toLowerCase().includes(searchVal) || 
+                              member.role.toLowerCase().includes(searchVal) || 
+                              member.dept.toLowerCase().includes(searchVal);
+        return matchesCategory && matchesSearch;
+      });
+
+      renderCards(filtered);
+    }
+
+    // Modal Inspect Panel (Simulates reading metrics and custom profiles)
+    function openInspector(id) {
+      const member = committeeData.find(m => m.id === id);
+      if (!member) return;
+
+      const modal = document.getElementById('inspectorModal');
+      const modalCard = document.getElementById('modalCard');
+      const content = document.getElementById('modalContent');
+
+      // Theme mappings
+      const accentText = member.accentColor === 'emerald' ? 'text-emerald-400' : 'text-fuchsia-400';
+      const accentBg = member.accentColor === 'emerald' ? 'bg-emerald-950/40 border-emerald-900/50' : 'bg-fuchsia-950/40 border-fuchsia-900/50';
+      const skillBarBg = member.accentColor === 'emerald' ? 'bg-emerald-500' : 'bg-fuchsia-500';
+
+      let skillsHtml = '';
+      for (const [key, value] of Object.entries(member.skills)) {
+        // Humanize key camelcase values
+        const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        skillsHtml += `
+          <div>
+            <div class="flex justify-between text-xs font-mono text-neutral-400 mb-1.5 uppercase">
+              <span>${label}</span>
+              <span class="${accentText}">${value}%</span>
+            </div>
+            <div class="w-full bg-neutral-900 rounded-full h-2 overflow-hidden border border-neutral-800">
+              <div class="h-full ${skillBarBg} rounded-full" style="width: ${value}%"></div>
+            </div>
+          </div>
+        `;
+      }
+
+      content.innerHTML = `
+        <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+          <!-- Left Visual Avatar Column -->
+          <div class="w-32 h-32 shrink-0 rounded-full p-[3px] bg-gradient-to-tr ${member.colorTheme} shadow-[0_0_20px_rgba(217,70,239,0.15)]">
+            <div class="w-full h-full bg-neutral-950 rounded-full flex items-center justify-center overflow-hidden">
+              <svg class="w-20 h-20 text-neutral-400" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="45" r="22" stroke="${member.accentColor === 'emerald' ? '#10b981' : '#d946ef'}" stroke-width="2" stroke-dasharray="2 2" />
+                <rect x="38" y="32" width="24" height="26" rx="12" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M42 45H58" stroke="${member.accentColor === 'emerald' ? '#10b981' : '#d946ef'}" stroke-width="2" />
+                <path d="M44 58v10h12V58" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M30 78c0-8 10-10 20-10s20 2 20 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Right Content Column -->
+          <div class="flex-1 w-full text-center md:text-left">
+            <span class="text-[10px] font-mono tracking-[0.25em] text-neutral-500 uppercase">Oxygen Robotics Member Profile</span>
+            <h3 class="text-2xl sm:text-3xl font-black text-neutral-100 uppercase tracking-wide mt-1">${member.name}</h3>
+            
+            <div class="flex flex-wrap gap-2 justify-center md:justify-start items-center mt-3">
+              <span class="text-[11px] font-mono font-bold tracking-wider uppercase px-2.5 py-1 rounded-md border ${accentBg} ${accentText}">
+                ${member.role}
+              </span>
+              <span class="text-[11px] font-mono text-neutral-400">
+                ${member.dept}
+              </span>
+            </div>
+
+            <!-- Deep Tech Bio -->
+            <div class="mt-6">
+              <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-400 border-b border-neutral-900 pb-2 mb-2">Capabilities Synopsis</h4>
+              <p class="text-sm text-neutral-300 leading-relaxed font-sans">${member.bio}</p>
+            </div>
+
+            <!-- Skills HUD System Matrix -->
+            <div class="mt-6">
+              <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-400 border-b border-neutral-900 pb-2 mb-3">Robotics Capability Calibration</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                ${skillsHtml}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Trigger animations
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modalCard.classList.remove('scale-95');
+      modalCard.classList.add('scale-100');
+    }
+
+    function closeInspector() {
+      const modal = document.getElementById('inspectorModal');
+      const modalCard = document.getElementById('modalCard');
+
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+    }
+
+    // Global Close Listener (clicking outside the card)
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('inspectorModal');
+      if (e.target === modal) {
+        closeInspector();
+      }
+    });
+
+    // Handle initial DOM load
+    window.onload = function() {
+      renderCards();
+    }
+  </script>
+</body>
+</html>
