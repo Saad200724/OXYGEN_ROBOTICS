@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import IgnitionCore from "./IgnitionCore";
+import ScrambleText from "./ScrambleText";
 
 const HeroSection = () => {
   const status = {
@@ -37,7 +38,7 @@ const HeroSection = () => {
             >
               <span className="text-foreground">We build</span>
               <br />
-              <span className="text-primary">the founders</span>
+              <ScrambleText text="the founders" className="text-primary" duration={1100} fps={28} />
               <br />
               <span className="text-foreground">of robotics.</span>
             </motion.h1>
