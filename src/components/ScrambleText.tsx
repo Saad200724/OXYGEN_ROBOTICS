@@ -1,25 +1,31 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-// Romance language characters mixed with standard letters for the scramble pool
-const SCRAMBLE_CHARS =
-  "abcdefghijklmnopqrstuvwxyzáàâãäéèêëíìîïóòôõöúùûüñçýÿæøåβγδζθλμξπσφψωαε";
+// Only narrow Latin + common Romance/accented chars — no wide Greek to avoid layout shift
+const SCRAMBLE_CHARS = "abcdefghijklmnopqrstuvwxyzáàâãéèêëíìóòôõúùûñçýæø";
 
 interface ScrambleTextProps {
   text: string;
   className?: string;
-  duration?: number;   // total ms for the scramble
-  fps?: number;        // frames per second
+  duration?: number;
+  fps?: number;
 }
 
 const ScrambleText = ({
   text,
   className = "",
-  duration = 900,
-  fps = 30,
+  duration = 1100,
+  fps = 28,
 }: ScrambleTextProps) => {
   const [displayed, setDisplayed] = useState(text);
-  const rafRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isRunning = useRef(false);
+
+  // Pre-compute non-space positions so resolve threshold is space-aware
+  const nonSpacePositions = text
+    .split("")
+    .map((c, i) => (c !== " " ? i : -1))
+    .filter((i) => i !== -1);
+  const nonSpaceCount = nonSpacePositions.length;
 
   const scramble = useCallback(() => {
     if (isRunning.current) return;
@@ -31,16 +37,17 @@ const ScrambleText = ({
 
     const tick = () => {
       frame++;
-      const progress = frame / totalFrames; // 0→1
+      const progress = frame / totalFrames; // 0 → 1
 
-      // Each character resolves left-to-right based on progress
+      // How many non-space chars have resolved so far
+      const resolvedCount = Math.floor(progress * nonSpaceCount);
+      const resolvedIndices = new Set(nonSpacePositions.slice(0, resolvedCount));
+
       const result = text
         .split("")
         .map((char, i) => {
-          if (char === " ") return " ";
-          const resolveThreshold = (i + 1) / text.replace(/ /g, "").length;
-          if (progress >= resolveThreshold) return char;
-          // still scrambling: pick a random char from the pool
+          if (char === " ") return "\u00a0"; // non-breaking space keeps width
+          if (resolvedIndices.has(i)) return char;
           return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
         })
         .join("");
@@ -48,7 +55,7 @@ const ScrambleText = ({
       setDisplayed(result);
 
       if (frame < totalFrames) {
-        rafRef.current = setTimeout(tick, interval);
+        timerRef.current = setTimeout(tick, interval);
       } else {
         setDisplayed(text);
         isRunning.current = false;
@@ -56,22 +63,23 @@ const ScrambleText = ({
     };
 
     tick();
-  }, [text, duration, fps]);
+  }, [text, duration, fps, nonSpaceCount, nonSpacePositions]);
 
   // Auto-play once on mount
   useEffect(() => {
-    const t = setTimeout(() => scramble(), 300);
+    const t = setTimeout(() => scramble(), 350);
     return () => {
       clearTimeout(t);
-      if (rafRef.current) clearTimeout(rafRef.current);
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, [scramble]);
 
   return (
     <span
-      className={`cursor-pointer select-none ${className}`}
+      className={`cursor-pointer select-none whitespace-nowrap inline-block ${className}`}
       onMouseEnter={scramble}
       onClick={scramble}
+      aria-label={text}
     >
       {displayed}
     </span>
