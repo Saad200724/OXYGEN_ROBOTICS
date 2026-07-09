@@ -367,9 +367,24 @@ function MemberModal({ member, onClose }: { member: Member | null; onClose: () =
   );
 }
 
-// ─── Member row ───────────────────────────────────────────────────────────────
+// ─── Member avatar SVG ────────────────────────────────────────────────────────
 
-function MemberRow({
+function MemberAvatar() {
+  return (
+    <svg className="w-full h-full p-3 text-muted-foreground/40" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="45" r="22" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
+      <path d="M50 20V13M50 77v-7M20 50h7M73 50h7" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+      <rect x="38" y="32" width="24" height="26" rx="12" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M42 46H58" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M44 58v9h12v-9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M30 78c0-8 10-10 20-10s20 2 20 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// ─── Member card ──────────────────────────────────────────────────────────────
+
+function MemberCard({
   member,
   index,
   onInspect,
@@ -382,38 +397,40 @@ function MemberRow({
     <motion.button
       type="button"
       aria-label={`View profile for ${member.name}, ${member.role}`}
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
       transition={{ delay: index * 0.04, duration: 0.3 }}
       onClick={() => onInspect(member)}
-      className="group w-full text-left border-b border-border py-6 sm:py-7 grid grid-cols-12 gap-4 sm:gap-6 items-center hover:bg-card/20 transition-colors -mx-4 px-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+      className="group w-full text-left bg-card/30 border border-border hover:border-primary/40 transition-all duration-200 p-5 flex flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
     >
-      {/* Index */}
-      <div className="col-span-2 sm:col-span-1 font-mono text-xs text-muted-foreground/50">
-        {String(index + 1).padStart(2, "0")}
+      {/* Avatar */}
+      <div className="w-20 h-20 border border-border group-hover:border-primary/30 transition-colors mb-4 mx-auto">
+        <MemberAvatar />
       </div>
 
       {/* Name */}
-      <div className="col-span-10 sm:col-span-3 font-display text-base sm:text-lg font-bold group-hover:text-primary transition-colors">
+      <h3 className="font-display text-sm font-bold text-foreground group-hover:text-primary transition-colors text-center leading-snug mb-2">
         {member.name}
-      </div>
+      </h3>
 
-      {/* Role */}
-      <div className="col-span-12 sm:col-span-3">
-        <span className="font-mono text-xs text-primary border border-primary/30 px-2 py-0.5">
+      {/* Role tag */}
+      <div className="flex justify-center mb-1">
+        <span className="font-mono text-[10px] text-primary border border-primary/30 px-2 py-0.5 uppercase tracking-wider">
           {member.role}
         </span>
       </div>
 
-      {/* Dept */}
-      <div className="col-span-10 sm:col-span-4 font-mono text-xs text-muted-foreground">
-        {member.dept}
-      </div>
+      {/* Divider */}
+      <div className="w-8 h-px bg-border mx-auto my-3 group-hover:w-12 group-hover:bg-primary transition-all duration-200" />
 
-      {/* Arrow */}
-      <div className="col-span-2 sm:col-span-1 text-right font-mono text-xs text-muted-foreground/40 group-hover:text-primary transition-colors">
-        →
+      {/* Dept */}
+      <p className="font-mono text-[10px] text-muted-foreground text-center uppercase tracking-wider leading-relaxed">
+        {member.dept}
+      </p>
+
+      {/* CTA */}
+      <div className="mt-4 pt-3 border-t border-border w-full text-center font-mono text-[10px] text-muted-foreground/50 group-hover:text-primary uppercase tracking-widest transition-colors">
+        View Profile →
       </div>
     </motion.button>
   );
@@ -613,17 +630,19 @@ const Panel = () => {
               </div>
             </div>
 
-            {/* ── Member list ── */}
-            <div>
+            {/* ── Member grid ── */}
+            <div className="pt-8">
               {filteredMembers.length > 0 ? (
-                filteredMembers.map((member, i) => (
-                  <MemberRow
-                    key={member.id}
-                    member={member}
-                    index={i}
-                    onInspect={setInspectedMember}
-                  />
-                ))
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                  {filteredMembers.map((member, i) => (
+                    <MemberCard
+                      key={member.id}
+                      member={member}
+                      index={i}
+                      onInspect={setInspectedMember}
+                    />
+                  ))}
+                </div>
               ) : (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -634,7 +653,6 @@ const Panel = () => {
                 </motion.div>
               )}
 
-              {/* Member count footer */}
               {filteredMembers.length > 0 && (
                 <div className="pt-6 font-mono text-[10px] text-muted-foreground/50 uppercase tracking-widest">
                   {filteredMembers.length} member{filteredMembers.length !== 1 ? "s" : ""} shown
